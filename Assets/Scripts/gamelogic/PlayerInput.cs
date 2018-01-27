@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour {
 
     public enum Direction
     {
-        None, Top, Right, Bottom, Left
+        None = -1, Top, Right, Bottom, Left
     }
     [Header("Player Setting")]
     public bool useKeyboard;

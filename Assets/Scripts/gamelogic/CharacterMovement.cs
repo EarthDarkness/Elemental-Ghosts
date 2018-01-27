@@ -7,7 +7,7 @@ public class CharacterMovement : MonoBehaviour
 {
 
     [Header("Initial Setup"), Tooltip("Only applicable before the start of the game")]
-    public PlayerInput.Direction initialDirection;
+    public PlayerInput.Direction initialDirection = PlayerInput.Direction.Right;
 
     [Header("Controller Setup"), Tooltip("Velocity of the player")]
     public float velocity = 5.0f;
@@ -24,6 +24,8 @@ public class CharacterMovement : MonoBehaviour
     private new Rigidbody rigidbody;
     private Vector3 tempVector;
 
+    [InspectorReadOnly]
+    public bool aligned = true;
     // Use this for initialization
     void Start()
     {
@@ -109,8 +111,15 @@ public class CharacterMovement : MonoBehaviour
 
     private bool CheckCanChange()
     {
-        return true;
+        return aligned;
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        // invert direction
+        //ChangeDirection((PlayerInput.Direction)((((int)currentDirection) + 2) % 4));
+    }
+
 
    
 }
