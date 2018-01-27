@@ -41,10 +41,14 @@ public class Board : MonoBehaviour{
     public int _width   = 20;
     public int _height  = 20;
 
+	float[] _dim = new float[2]{ 1.0f,1.0f};
+
 	GameObject[,] _map;
 
 	[EasyButtons.Button()]
 	void Deploy() {
+		float minx = -(_width*_dim[0])/2;
+		float miny = -(_height*_dim[1])/2;
 		_map = new GameObject[_width,_height];
 		
 		for(int j=0;j<_height;++j) {
@@ -54,6 +58,7 @@ public class Board : MonoBehaviour{
 			for(int i=0;i<_width;++i) {
 				_map[i,j] = new GameObject();
 				_map[i,j].transform.parent = line.transform;
+				_map[i, j].transform.position = new Vector3(minx+_dim[0]*i,0.0f,miny+_dim[1]*j);
 				_map[i,j].AddComponent<TileCell>();
 				_map[i, j].name = "Col "+i.ToString();
 			}
