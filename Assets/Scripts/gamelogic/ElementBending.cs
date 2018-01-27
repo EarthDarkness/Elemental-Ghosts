@@ -40,7 +40,7 @@ public class ElementBending : MonoBehaviour
     }
 
 
-    private void Action()
+    public void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
