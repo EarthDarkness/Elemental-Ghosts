@@ -68,6 +68,7 @@ public class ElementBending : MonoBehaviour
         // Animate
         // Particles
         // 
+        StartCoroutine(_WaitToDie());
     }
 
     public IEnumerator _WaitToDie()

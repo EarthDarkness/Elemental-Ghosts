@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
             ElementBending elementBending = other.GetComponent<ElementBending>();
             ElementTable.ElementType otherElement = elementBending.elementType;
             bool otherBuff = elementBending.playerIsBuffed;
-            ResolveInteraction(ElementTable.GetProjectileResult(type, otherElement,buffed,otherBuff));
+            ResolveInteraction(elementBending, ElementTable.GetProjectileResult(type, otherElement,buffed,otherBuff));
             Destroy(this.gameObject);
         }
         else
@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void ResolveInteraction(ElementTable.FightState result)
+    void ResolveInteraction(ElementBending other, ElementTable.FightState result)
     {
         switch (result)
         {
@@ -58,6 +58,7 @@ public class Projectile : MonoBehaviour
             case ElementTable.FightState.Buffed:
                 break;
             case ElementTable.FightState.Destroy:
+                other.Die();
                 break;
             case ElementTable.FightState.Nothing:
                 break;
