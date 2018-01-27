@@ -128,14 +128,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  EmitterDuration: 0.5
+  EmitterDuration: 0.25
   Loop: 0
   colors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0.2275862, b: 0, a: 0}
+    key0: {r: 0.9632353, g: 0.8342055, b: 0.6799308, a: 0}
     key1: {r: 0.9906694, g: 1, b: 0.32352942, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -153,8 +153,8 @@ MonoBehaviour:
     ctime7: 0
     atime0: 0
     atime1: 17733
-    atime2: 32382
-    atime3: 65535
+    atime2: 27563
+    atime3: 56090
     atime4: 0
     atime5: 0
     atime6: 0
@@ -194,14 +194,14 @@ MonoBehaviour:
   EmissionRate: 150
   PoolSize: 335
   Size:
-  - 5
-  - 10
-  LifeSpan: 1.19
+  - 20
+  - 30
+  LifeSpan: 0.35
   direction: 0
   colorType: 2
   sizeType: 1
   Radius: {x: 0, y: 0}
-  innerRadius: 0.292
+  innerRadius: 0.349
   Angle: 90
   Threshold: 0
 --- !u!222 &222491956420750730
@@ -223,8 +223,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0.6534668, y: 0.6033203}
-  m_AnchorMax: {x: 0.9891113, y: 0.8758463}
-  m_AnchoredPosition: {x: -94.6156, y: -23.483337}
-  m_SizeDelta: {x: 243.81216, y: 177.46893}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3, y: 1.3}
+  m_SizeDelta: {x: 629.5, y: 367.3}
   m_Pivot: {x: 0.5, y: 0.5}
