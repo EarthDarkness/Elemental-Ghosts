@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniversalNetworkInput;
 
+public class CharacterCreated : ASignal<CharacterMovement> { }
 public class CharacterMovement : MonoBehaviour
 {
 
@@ -37,6 +38,9 @@ public class CharacterMovement : MonoBehaviour
 
         ChangeDirection(initialDirection);
         rigidbody = GetComponent<Rigidbody>();
+
+        Signals.Get<CharacterCreated>().Dispatch(this);
+        
     }
 
     // Update is called once per frame
