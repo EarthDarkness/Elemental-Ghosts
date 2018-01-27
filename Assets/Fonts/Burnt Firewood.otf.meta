@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2a72b7d3fea3c1843aba2b8b4d6c84db
+timeCreated: 1517026714
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Burnt Firewood
+  fontNames:
+  - Burnt Firewood
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
