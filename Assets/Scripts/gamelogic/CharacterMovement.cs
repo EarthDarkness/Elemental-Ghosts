@@ -130,6 +130,48 @@ public class CharacterMovement : MonoBehaviour
         {
             lastTimeCollision = Time.time + timeCollisionThreshold;
             // invert direction
+            tempVector = collision.transform.position;
+
+            switch (currentDirection)
+            {
+                case PlayerInput.Direction.Top:
+                    tempVector.x -= transform.position.x;
+                    if (tempVector.z < transform.position.z && Mathf.Abs(tempVector.x) < 1 )
+                    {
+                        Debug.Log("Collision not wanted, " + tempVector.z + " " + transform.position.z);
+                        return;
+                    }
+                    break;
+                case PlayerInput.Direction.Right:
+                    tempVector.z -= transform.position.z;
+                    if (tempVector.x < transform.position.x && Mathf.Abs(tempVector.z) < 1)
+                    {
+                        Debug.Log("Collision not wanted, " + tempVector.x + " " + transform.position.x);
+                        return;
+                    }
+                    break;
+                case PlayerInput.Direction.Bottom:
+                    tempVector.x -= transform.position.x;
+                    if (tempVector.z > transform.position.z && Mathf.Abs(tempVector.x) < 1)
+                    {
+                        Debug.Log("Collision not wanted, " + tempVector.z + " " + transform.position.z);
+                        return;
+                    }
+                    break;
+                case PlayerInput.Direction.Left:
+                    tempVector.z -= transform.position.z;
+                    if (tempVector.x > transform.position.x && Mathf.Abs(tempVector.z) < 1)
+                    {
+                        Debug.Log("Collision not wanted, " + tempVector.x + " " + transform.position.x);
+                        return;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+
+            if (Mathf.Abs(tempVector.x) > 0.5 && Mathf.Abs(tempVector.y) < 0.5)
             ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));
 
         }
