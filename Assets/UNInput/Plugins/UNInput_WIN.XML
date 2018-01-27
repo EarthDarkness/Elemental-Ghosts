@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UNInput_WIN</name>
+    </assembly>
+    <members>
+        <member name="T:UniversalNetworkInput.EventSystem.UNInputModule">
+            <summary>
+            WIP - DON'T USE!
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_VerticalAxis">
+            <summary>
+            Name of the vertical axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_SubmitButton">
+            <summary>
+            Name of the submit button.
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_CancelButton">
+            <summary>
+            Name of the submit button.
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.EventSystem.UNInputModule.horizontalAxis">
+            <summary>
+            Name of the horizontal axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.EventSystem.UNInputModule.verticalAxis">
+            <summary>
+            Name of the vertical axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.SendSubmitEventToSelectedObject">
+            <summary>
+            Process submit keys.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.SendMoveEventToSelectedObject">
+            <summary>
+            Process keyboard events.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.ProcessMouseEvent(System.Int32)">
+            <summary>
+            Process all mouse events.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.ProcessMousePress(UnityEngine.EventSystems.PointerInputModule.MouseButtonEventData)">
+            <summary>
+            Process the current mouse press.
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Hardware.HardwareInput">
+            <summary>
+            Hardware implementation of Virtual Input
+            interface, translates data to proper auto
+            registered UNInput entrys on Input Manager
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Hardware.JoystickChecker">
+            <summary>
+            Mono Behaviour hook to Check connected
+            Joysticks on Unity's Update Loop
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Internal.AxisType">
+            <summary>
+            Internal Representation of Input Manager's axis Type!
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Internal.InputAxis">
+            <summary>
+            Internal Representation of Input Manager's InputAxis
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.NetworkInput">
+            <summary>
+            Network Implementation of Virtual Input
+            interface. Handles abstraction devices
+            connected through the Network Layer
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.NetworkInput.reliable_changes">
+            <summary>
+            Strings that hold every changes since last Pull
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.NetworkInput.PullReliableChangesBuffer">
+            <summary>
+            Get Bytes from Changes Buffer String
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.NetworkInput.PullUnreliableChangesBuffer">
+            <summary>
+            Get Bytes from Changes Buffer String
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.NetworkInput.PushChangesBuffer(System.Byte[])">
+            <summary>
+            Apply changes from parsed Changes Buffer String
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.NetworkInput.GetRegistrationPackage(System.Byte[]@)">
+            <summary>
+            Returns the size of the packet generated and outputs the
+            array of bytes from the registration packet, if it has an
+            key code assigned also append it.
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.ClientLoop">
+            <summary>
+            MonoBehaviour hook for processing data
+            on Late Update Loop. This component is
+            added to the UNInput Loop Object.
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.UNClient">
+            <summary>
+            Static class that handles the virtual network control,
+            it's connection, and sent update packages with latest
+            Input values and buttons pressed.
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.host_port">
+            <summary>
+            Current Client's Host Port
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.ip_address">
+            <summary>
+            Current Client's Host IP Address
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.control_name">
+            <summary>
+            The name of the control from whose data will be synced with server
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.connected">
+            <summary>
+            Flag that determines wheather or not client is connected
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.control">
+            <summary>
+            Reference to the Virtual Control of this Network Client
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.prefab_name">
+            <summary>
+            The name of the AssetBundle prefab to be instantiated
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.server_ip">
+            <summary>
+            Last server whose IP we tried to connect to
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNClient.prefab_instance">
+            <summary>
+            The Instance of the instantiated AssetBundle prefab
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onConnect">
+            <summary>
+            Callback called on a Connection occurs, being it either a new
+            connection or a reconnection from droped session
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onDisconnect">
+            <summary>
+            Callback called on a disconnection,
+            either because of a Drop or because
+            of a desired disconnection
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onConnectionDroped">
+            <summary>
+            Callback called whenever the connection droped
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onConnectionFailure">
+            <summary>
+            Callback called whenever we could not
+            connect to some server
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onFragmentReceived">
+            <summary>
+            Callback called whenever a Bundle fragment is received.
+            Parameter is the fraction of the download (range 0->1)!
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.UNClient.onBundleDownloaded">
+            <summary>
+            Callback called whenever the Bundle has been entirelly received
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.#cctor">
+            <summary>
+            Static constructor initializes Unity's Low Level API
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.Connect(System.String,System.UInt16,System.String)">
+            <summary>
+            Connects to Server at given IP on given port, ip_address
+            is given only if you wanna specify the network adapter to
+            be used for connecting to such server.
+            </summary>
+            <param name="server_ip"></param>
+            <param name="port"></param>
+            <param name="ip_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.JustConnect">
+            <summary>
+            Only the connection step. It may happens that it will fail after a while even returning 0.
+            Make sure to ProcessMessagePool for a connection response, if none in a few seconds, call
+            onConnectionDroped or onConnectionFailure callbacks (check if they are not null first!)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.ProcessMessagePool">
+            <summary>
+            Process every message in received message pool:
+            - Handles connection to server
+            - Properly disconnect Controls
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.SendInputChanges">
+            <summary>
+            Sends Changes Buffer from Default Controler
+            (as defined by "control_name")...
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNClient.Disconnect">
+            <summary>
+            Closes current connection with the server
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.Internal.UNNMessageFlag">
+            <summary>
+            Enum flag to define the type of message that
+            has been trasmitted trough the Network
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.Internal.UNNMessageFlag.Update">
+            <summary>
+            State update received
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.Internal.UNNMessageFlag.Registration">
+            <summary>
+            Registration string
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.Internal.UNNMessageFlag.BundleFragment">
+            <summary>
+            A piece of bundle fragment
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.Internal.UNNMessageFlag.BundleFragmentInfo">
+            <summary>
+            Flag to represent BundleFragment info header
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.Internal.UNNMessageFlag.UNNProtocolSize">
+            <summary>
+            Last flag defines protocol size
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.Internal.UNNetwork">
+            <summary>
+            Utility class with Helpfull functions for
+            handling Network data within UNInput network
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.Internal.UNNetwork.GetLocalIPAddress">
+            <summary>
+            Goes through every IP in localhost address list
+            and returns the first one that is an internet IP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.Internal.UNServerPreferences">
+            <summary>
+            Structure that defines serialized
+            server preferences asset object on disk
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.ServerLoop">
+            <summary>
+            MonoBehaviour hook for processing data
+            on Late Update Loop. This component is
+            added to the UNInput Loop Object.
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.HostInfo">
+            <summary>
+            Structure that hold primary
+            Host connection information
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.HostInfo.id">
+            <summary>
+            The host unique ID
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.HostInfo.connection">
+            <summary>
+            The host current connection
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.HostInfo.channels">
+            <summary>
+            The array of host's channels
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.NetworkControlInfo">
+            <summary>
+            Structure that hold Network Control information,
+            as registered in UNInput's Device List...
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.NetworkControlInfo.host">
+            <summary>
+            Host info of this client
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.NetworkControlInfo.name">
+            <summary>
+            Control name registered
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.Network.NetworkControlInfo.id">
+            <summary>
+            Index in UNInput's list
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.Network.UNServer">
+            <summary>
+            Static class that handles virtual network controls'
+            connections and updates their information besed on
+            the update packets.
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.host_port">
+            <summary>
+            Current Server's Host Port
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.ip_address">
+            <summary>
+            Current Server's Host IP Address
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.max_connections">
+            <summary>
+            Current Number of Max Concurrent Connections
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.control_prefix">
+            <summary>
+            Prefix that goes on front of every connected control
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.preferences">
+            <summary>
+            Server Preferences loaded from external assets
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.Network.UNServer.initialized">
+            <summary>
+            Flag that tells weather server has been
+            intialized and is running...
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNServer.#cctor">
+            <summary>
+            Static constructor initializes Unity's Low Level API
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNServer.Start(System.Int32,System.UInt16,System.String)">
+            <summary>
+            Start Server with max number of connections on given port,
+            ip_address is given only if you wanna specify the network
+            adapter to be used for hosting this server.
+            </summary>
+            <param name="max_connections"></param>
+            <param name="port"></param>
+            <param name="ip_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNServer.ProcessMessagePool">
+            <summary>
+            Process every message in received message pool:
+            - Register new Controls
+            - Updates received Inputs
+            - Properly disconnect Controls
+            - Handles Broadcast messages
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.Network.UNServer.Shutdown">
+            <summary>
+            Shutdown Network Transport Layer and close connection with all clients
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.UNInput">
+            <summary>
+            Main class of Universal Network Input
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LSH">
+            <summary>
+            Left Stick Horizontal
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LeftStickHorizontal">
+            <summary>
+            Left Stick Horizontal
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LSV">
+            <summary>
+            Left Stick Vertical
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LeftStickVertical">
+            <summary>
+            Left Stick Vertical
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RSH">
+            <summary>
+            Right Stick Horizontal
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RightStickHorizontal">
+            <summary>
+            Right Stick Horizontal
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RSV">
+            <summary>
+            Right Stick Vertical
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RightStickVertical">
+            <summary>
+            Right Stick Vertical
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LT">
+            <summary>
+            Gamepad Xbox: Left Trigger | Gamepad Playstation: L2
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.LeftTrigger">
+            <summary>
+            Gamepad Xbox: Left Trigger | Gamepad Playstation: L2
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RT">
+            <summary>
+            Gamepad Xbox: Right Trigger | Gamepad Playstation: R2
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.AxisCode.RightTrigger">
+            <summary>
+            Gamepad Xbox: Right Trigger | Gamepad Playstation: R2
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.None">
+            <summary>
+            No Button Code Selected
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.A">
+            <summary>
+            Gamepad Xbox: Button A | Gamepad Playstation: Button X
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.B">
+            <summary>
+            Gamepad Xbox: Button B | Gamepad Playstation: Button Circle
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.X">
+            <summary>
+            Gamepad Xbox: Button X | Gamepad Playstation: Button Square
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.Y">
+            <summary>
+            Gamepad Xbox: Button Y | Gamepad Playstation: Button Triangle
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.LB">
+            <summary>
+            Gamepad Xbox: Button Left Bumper | Gamepad Playstation: Button L1
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.LeftBumper">
+            <summary>
+            Gamepad Xbox: Button Left Bumper | Gamepad Playstation: Button L1
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.RB">
+            <summary>
+            Gamepad Xbox: Button Right Bumper | Gamepad Playstation: Button R1
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.RightBumper">
+            <summary>
+            Gamepad Xbox: Button Right Bumper | Gamepad Playstation: Button R1
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.Back">
+            <summary>
+            Gamepad Xbox: Button Back | Gamepad Playstation: Button Select
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.Start">
+            <summary>
+            Button Start
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.LS">
+            <summary>
+            Gamepad Xbox: Button Left Stick | Gamepad Playstation: Button L3
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.LeftStick">
+            <summary>
+            Gamepad Xbox: Button Left Stick | Gamepad Playstation: Button L3
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.RS">
+            <summary>
+            Gamepad Xbox: Button Right Stick | Gamepad Playstation: Button R3
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.RightStick">
+            <summary>
+            Gamepad Xbox: Button Right Stick | Gamepad Playstation: Button R3
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPU">
+            <summary>
+            Button DPad Up
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPadUp">
+            <summary>
+            Button DPad Up
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPD">
+            <summary>
+            Button DPad Down
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPadDown">
+            <summary>
+            Button DPad Down
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPL">
+            <summary>
+            Button DPad Left
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPadLeft">
+            <summary>
+            Button DPad Left
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPR">
+            <summary>
+            Button DPad Right
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.ButtonCode.DPadRight">
+            <summary>
+            Button DPad Right
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.VirtualInput">
+            <summary>
+            Abstract class that represents every kind of Input
+            registered control on UNInput's list
+            </summary>
+        </member>
+    </members>
+</doc>
