@@ -29,8 +29,8 @@ public static class ElementTable
         Wood = 4,
         Neutral = 5
     }
-
-    private static ElementType[] weakness = new ElementType[]
+	//TEMP public until refatory
+    public static ElementType[] weakness = new ElementType[]
     {
                 ElementType.Water,
                 ElementType.Wood,
