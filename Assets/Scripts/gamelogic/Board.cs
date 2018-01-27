@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour{
+	public List<CharacterMovement> _players;
 
 	public bool _lock = false;//looks interactivity (true for prefab)
     public int _width   = 20;
@@ -11,6 +12,24 @@ public class Board : MonoBehaviour{
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
 	GameObject[,] _map;
+	void Awake() {
+		Signals.Get<CharacterCreated>().AddListener(join);
+	}
+	void Start() {
+		Signals.Get<PickupElement>().AddListener(PickElement);
+	}
+	void Update() {
+		for(int i=0;i<_players.Count;++i) {
+			if(_players[i].currentDirection == PlayerInput.Direction.Left || _players[i].currentDirection == PlayerInput.Direction.Right) {
+				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)<0.01f);
+			}else if(_players[i].currentDirection == PlayerInput.Direction.Top || _players[i].currentDirection == PlayerInput.Direction.Bottom) {
+				_players[i].aligned = (GetAlignY(_players[i].transform.position.z)<0.01f);
+			}
+
+
+		}
+	}
+
 
 	[EasyButtons.Button()]
 	void Fetch() {
@@ -119,18 +138,27 @@ public class Board : MonoBehaviour{
 		float gy = y - miny;
 		return Mathf.RoundToInt(gy);
 	}
+	float GetAlignX(float x) {
+		float minx = -(_width*_dim[0])/2;
+		float gx = x - minx;
+		return Mathf.Abs(gx-Mathf.Round(gx));
+	}
+	float GetAlignY(float y) {
+		float miny = -(_height*_dim[1])/2;
+		float gy = y - miny;
+		return Mathf.Abs(gy-Mathf.Round(gy));
+	}
 
-	void PickElement() {
-		//GameObject player;//hook
+	void PickElement(ElementBending bend) {
+		if (bend.elementType != ElementTable.ElementType.Neutral)
+			return;
 
-		//PlayerMovement pm = player.GetComponent<PlayerMovement>();
+		int gix = GetTileX(bend.transform.position.x);
+		int giy = GetTileX(bend.transform.position.z);
 
-		//int gix = GetTileX(player.transform.position.x);
-		//int giy = GetTileX(player.transform.position.z);
-
-		//int ele = _map[gix, giy].GetComponent<TileCell>()._elementType;
-		//_map[gix, giy].GetComponent<TileCell>()._elementType = 6;//no element
-		////player._element = ele;
+		ElementTable.ElementType ele = (ElementTable.ElementType)_map[gix, giy].GetComponent<TileCell>()._elementType;
+		_map[gix, giy].GetComponent<TileCell>()._elementType = 6;//no element
+		bend.elementType = ele;
 
 	}
 	void DropElement() {
@@ -151,6 +179,11 @@ public class Board : MonoBehaviour{
 		//}
 
 	}
+
+	void join(CharacterMovement cm) {
+		_players.Add(cm);
+	}
+
 }
 
 
