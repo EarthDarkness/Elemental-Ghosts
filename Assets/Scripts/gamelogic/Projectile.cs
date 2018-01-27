@@ -37,8 +37,9 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ElementTable.ElementType otherElement = other.GetComponent<ElementBending>().elementType;
-            bool otherBuff = other.GetComponent<ElementBending>().playerIsBuffed;
+            ElementBending elementBending = other.GetComponent<ElementBending>();
+            ElementTable.ElementType otherElement = elementBending.elementType;
+            bool otherBuff = elementBending.playerIsBuffed;
             ResolveInteraction(ElementTable.GetProjectileResult(type, otherElement,buffed,otherBuff));
             Destroy(this.gameObject);
         }
