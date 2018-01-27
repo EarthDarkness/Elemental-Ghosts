@@ -200,12 +200,14 @@ public class Board : MonoBehaviour{
 
 		int nElement = (int)pj.type;
 		int cElement = _map[gix, giy].GetComponent<TileCell>()._elementType;
+		--Spawner._count;
 		if ((int)ElementTable.weakness[cElement] == nElement) {
 			_map[gix, giy].GetComponent<TileCell>()._elementType = nElement;
 		} else if ((int)ElementTable.weakness[nElement] == cElement) {
 			//stay same
 		} else {
 			_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
+			--Spawner._count;
 		}
 
 	}
