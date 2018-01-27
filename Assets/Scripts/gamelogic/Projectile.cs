@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 public class HitWall : ASignal<Projectile> { }
@@ -11,6 +12,7 @@ public class Projectile : MonoBehaviour
     public float force;
     public Vector3 direction;
     bool buffed = false;
+    public List<ElementModel> listElement;
 
     Board board;
 
@@ -21,6 +23,8 @@ public class Projectile : MonoBehaviour
         type = elementType;
         this.direction = direction;
         this.buffed = buffed;
+
+        ElementModel.ChangeModel(listElement, elementType);
     }
 
     // Use this for initialization
@@ -58,7 +62,7 @@ public class Projectile : MonoBehaviour
             case ElementTable.FightState.Buffed:
                 break;
             case ElementTable.FightState.Destroy:
-                other.Die();
+                other.GetComponent<PlayerData>().Die();
                 break;
             case ElementTable.FightState.Nothing:
                 break;

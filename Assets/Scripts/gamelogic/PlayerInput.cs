@@ -28,7 +28,10 @@ public class PlayerInput : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        if (movement == null)
+            movement = GetComponent<CharacterMovement>();
+        if (elementBending == null)
+            elementBending = GetComponent<ElementBending>();
 	}
 
     private float tempH, tempV;

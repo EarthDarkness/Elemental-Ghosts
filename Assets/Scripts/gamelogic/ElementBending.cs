@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PickupElement : ASignal<ElementBending> { }
 public class ElementBending : MonoBehaviour
 {
-
     public GameObject projectile;
     public float castingTime;
     private Coroutine castRoutine;
+    public bool buffed = false;
+    public List<ElementModel> listElement;
 
-    public float timeDeath = 0.2f;
 
     public ElementTable.ElementType elementType
     {
         set
         {
             currentType = value;
-            SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
+            ChangeModel();
+
         }
         get { return currentType; }
     }
@@ -32,12 +34,12 @@ public class ElementBending : MonoBehaviour
         get { return buffed; }
     }
 
-    public bool buffed = false;
 
     // Use this for initialization
     void Start()
     {
-        currentType = ElementTable.ElementType.Neutral;
+        elementType = ElementTable.ElementType.Neutral;
+
     }
 
 
@@ -58,22 +60,13 @@ public class ElementBending : MonoBehaviour
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
-        currentType = ElementTable.ElementType.Neutral;
+        elementType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
-        SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
     }
 
-    public void Die()
+    public void ChangeModel()
     {
-        // Animate
-        // Particles
-        // 
-        StartCoroutine(_WaitToDie());
+        ElementModel.ChangeModel(listElement, currentType);
     }
 
-    public IEnumerator _WaitToDie()
-    {
-        yield return new WaitForSeconds(timeDeath);
-        gameObject.SetActive(false);
-    }
 }
