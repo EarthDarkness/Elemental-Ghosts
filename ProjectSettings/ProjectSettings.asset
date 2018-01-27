@@ -549,7 +549,22 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: DOTWEEN_TMP
+    4: DOTWEEN_TMP
+    7: DOTWEEN_TMP
+    13: DOTWEEN_TMP
+    14: DOTWEEN_TMP
+    17: DOTWEEN_TMP
+    18: DOTWEEN_TMP
+    19: DOTWEEN_TMP
+    20: DOTWEEN_TMP
+    21: DOTWEEN_TMP
+    23: DOTWEEN_TMP
+    24: DOTWEEN_TMP
+    25: DOTWEEN_TMP
+    26: DOTWEEN_TMP
+    27: DOTWEEN_TMP
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}

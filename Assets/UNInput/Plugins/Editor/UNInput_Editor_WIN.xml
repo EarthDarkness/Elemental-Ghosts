@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UNInput_Editor_WIN</name>
+    </assembly>
+    <members>
+        <member name="T:UniversalNetworkInput.Internal.UNInputWindow">
+            <summary>
+            Editor Windows for UNInput configuration
+            </summary>
+        </member>
+    </members>
+</doc>
