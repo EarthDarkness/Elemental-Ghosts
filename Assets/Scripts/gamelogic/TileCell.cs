@@ -6,8 +6,8 @@ using UnityEngine;
 public class TileCell : MonoBehaviour{
 	public bool _lock = false;
 	public List<GameObject> _component = new List<GameObject>();
-	GameObject _elementVisual = null;
-	public int _elementType = 6;//6 = no element (TODO element type enum)
+	public GameObject _elementVisual = null;
+	public int _elementType = 5;//5 = no element (TODO element type enum)
 
 
 	/*void Awake() {

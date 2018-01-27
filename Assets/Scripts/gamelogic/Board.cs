@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour{
 	public List<CharacterMovement> _players;
+	public List<GameObject> _tilePrefab = new List<GameObject>(5);//5 elements
 
 	public bool _lock = false;//looks interactivity (true for prefab)
     public int _width   = 20;
@@ -29,6 +30,7 @@ public class Board : MonoBehaviour{
 	}
 	void Start() {
 		Signals.Get<PickupElement>().AddListener(PickElement);
+		Signals.Get<HitWalk>().AddListener(DropElement);
 	}
 	void Update() {
 		for(int i=0;i<_players.Count;++i) {
@@ -40,6 +42,22 @@ public class Board : MonoBehaviour{
 
 
 		}
+	}
+
+	public bool SpawnElement(int x, int y, int element) {
+		//Debug.Log(element.ToString());
+		Debug.Log(_map[x, y].GetComponent<TileCell>()._elementType);
+		if (_map[x, y].GetComponent<TileCell>()._elementType != (int)ElementTable.ElementType.Neutral)
+			return false;
+		//if (_map[x, y].GetComponent<TileCell>().GetComponentInChildren<Collider>() != null)
+		//	return false;
+
+		//if (_map[x, y].GetComponent<TileCell>()._component.Count > 0)
+		//	return false;
+
+		_map[x, y].GetComponent<TileCell>()._elementType = element;
+		_map[x, y].GetComponent<TileCell>()._elementVisual = Instantiate(_tilePrefab[element],_map[x, y].transform);
+		return true;
 	}
 
 
@@ -170,26 +188,25 @@ public class Board : MonoBehaviour{
 		int giy = GetTileX(bend.transform.position.z);
 
 		ElementTable.ElementType ele = (ElementTable.ElementType)_map[gix, giy].GetComponent<TileCell>()._elementType;
-		_map[gix, giy].GetComponent<TileCell>()._elementType = 6;//no element
+		_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
 		bend.elementType = ele;
 
 	}
-	void DropElement() {
-		//GameObject shot;
-		//Projectile pj = shot.GetComponent<Projectile>();
-		
-		//int gix = GetTileX(shot.transform.position.x);
-		//int giy = GetTileX(shot.transform.position.z);
+	void DropElement(Projectile shot) {
+		Projectile pj = shot.GetComponent<Projectile>();
 
-		//int nElement;// = pj._elementType;
-		//int cElement = _map[gix, giy].GetComponent<TileCell>()._elementType;
-		//if((int)ElementTable.weakness[cElement] == nElement) {
-		//	_map[gix, giy].GetComponent<TileCell>()._elementType = nElement;
-		//}else if((int)ElementTable.weakness[nElement] == cElement) {
-		//	//stay same
-		//}else {
-		//	_map[gix, giy].GetComponent<TileCell>()._elementType = 6;//no element
-		//}
+		int gix = GetTileX(shot.transform.position.x);
+		int giy = GetTileX(shot.transform.position.z);
+
+		int nElement = (int)pj.type;
+		int cElement = _map[gix, giy].GetComponent<TileCell>()._elementType;
+		if ((int)ElementTable.weakness[cElement] == nElement) {
+			_map[gix, giy].GetComponent<TileCell>()._elementType = nElement;
+		} else if ((int)ElementTable.weakness[nElement] == cElement) {
+			//stay same
+		} else {
+			_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
+		}
 
 	}
 
