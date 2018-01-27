@@ -22,6 +22,17 @@ public class ElementBending : MonoBehaviour
     }
     private ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
+    public bool playerIsBuffed
+    {
+        set
+        {
+            buffed = value;
+        }
+        get { return buffed; }
+    }
+
+    private bool buffed = false;
+
     // Use this for initialization
     void Start()
     {
@@ -45,7 +56,7 @@ public class ElementBending : MonoBehaviour
     {
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
-        newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType);
+        newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
         currentType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
         SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
