@@ -17,10 +17,10 @@ public class TracesController : MonoBehaviour {
 		if(traces.Count>0)
 		{
 			timer+=Time.deltaTime;
-			if(timer>0.25f)
+			if(timer>0.8334f)
 			{
 				timer=0f;
-				int id = Random.Range(0,traces.Count);
+				int id = 0;
 				traces[id].SetActive(true);
 				traces.RemoveAt(id);
 			}
