@@ -51,19 +51,20 @@ public class Board : MonoBehaviour{
 
 			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
 			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().elementType;
-			
-			if(ElementTable.weakness[(int)pel] == tel) {
-				_players[i].velocity = CharacterMovement.baseVelocity*_slowSpeed;
-				if(_players[i].transform.GetComponent<ElementBending>().buffed)
-					_players[i].velocity *= _boost;
-			}else if(ElementTable.fortification[(int)pel] == tel) {
-				_players[i].velocity = CharacterMovement.baseVelocity*_fastSpeed;
-				if(_players[i].transform.GetComponent<ElementBending>().buffed)
-					_players[i].velocity *= _boost;
-			}else {
-				_players[i].velocity = CharacterMovement.baseVelocity;
-			}
 
+			if(pel != ElementTable.ElementType.Neutral) {
+				if(ElementTable.weakness[(int)pel] == tel) {
+					_players[i].velocity = CharacterMovement.baseVelocity*_slowSpeed;
+					if(_players[i].transform.GetComponent<ElementBending>().buffed)
+						_players[i].velocity *= _boost;
+				}else if(ElementTable.fortification[(int)pel] == tel) {
+					_players[i].velocity = CharacterMovement.baseVelocity*_fastSpeed;
+					if(_players[i].transform.GetComponent<ElementBending>().buffed)
+						_players[i].velocity *= _boost;
+				}else {
+					_players[i].velocity = CharacterMovement.baseVelocity;
+				}
+			}
 		}
 	}
 
