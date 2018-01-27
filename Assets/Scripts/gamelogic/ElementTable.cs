@@ -40,7 +40,7 @@ public static class ElementTable
                 ElementType.Neutral
     };
 
-    private static ElementType[] fortification = new ElementType[]
+    public static ElementType[] fortification = new ElementType[]
     {
                 ElementType.Earth,
                 ElementType.Metal,

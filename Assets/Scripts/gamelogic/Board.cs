@@ -11,6 +11,12 @@ public class Board : MonoBehaviour{
     public int _height  = 20;
 
     public float _thresholdAlign = 0.1f;
+	
+	public static float _slowSpeed = 0.5f;
+	public static float _fastSpeed = 2.0f;
+	
+	public static float _boost = 2.0f;
+
 
     [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
 	float[] _dim = new float[2]{ 1.0f,1.0f};
@@ -40,6 +46,23 @@ public class Board : MonoBehaviour{
 				_players[i].aligned = (GetAlignY(_players[i].transform.position.z)< _thresholdAlign);
 			}
 
+			int px = GetTileX(_players[i].transform.position.x);
+			int py = GetTileX(_players[i].transform.position.z);
+
+			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
+			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().elementType;
+			
+			if(ElementTable.weakness[(int)pel] == tel) {
+				_players[i].velocity = CharacterMovement.baseVelocity*_slowSpeed;
+				if(_players[i].transform.GetComponent<ElementBending>().buffed)
+					_players[i].velocity *= _boost;
+			}else if(ElementTable.fortification[(int)pel] == tel) {
+				_players[i].velocity = CharacterMovement.baseVelocity*_fastSpeed;
+				if(_players[i].transform.GetComponent<ElementBending>().buffed)
+					_players[i].velocity *= _boost;
+			}else {
+				_players[i].velocity = CharacterMovement.baseVelocity;
+			}
 
 		}
 	}
