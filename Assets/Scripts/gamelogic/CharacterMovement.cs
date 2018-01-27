@@ -129,7 +129,7 @@ public class CharacterMovement : MonoBehaviour
 
         bufferDirectionChange = 0;
         nextDirection = Direction.None;
-
+        currentDirection = newDirection;
         switch (newDirection)
         {
             case Direction.Top:
