@@ -16,7 +16,7 @@ public class ElementBending : MonoBehaviour
         set
         {
             currentType = value;
-            SendMessage("ChangePlayerElement");
+            SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
         }
         get { return currentType; }
     }
@@ -44,9 +44,10 @@ public class ElementBending : MonoBehaviour
     public IEnumerator Shoot()
     {
         yield return new WaitForSeconds(castingTime);
-        GameObject newProjectile = Instantiate(projectile);
+        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType);
         currentType = ElementTable.ElementType.Neutral;
-        SendMessage("ChangePlayerElement");
+        Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
+        SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
     }
 }

@@ -11,10 +11,20 @@ public class Board : MonoBehaviour{
 
     public float _thresholdAlign = 0.1f;
 
+    [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
-	GameObject[,] _map;
+    [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
+    GameObject[,] _map;
 	void Awake() {
+        if(_map == null)
+        {
+            Debug.LogWarning("map is null, fetching object");
+            bool temp = _lock;
+            _lock = false;
+            Fetch();
+            _lock = temp;
+        }
 		Signals.Get<CharacterCreated>().AddListener(join);
 	}
 	void Start() {
@@ -71,6 +81,7 @@ public class Board : MonoBehaviour{
 				}
 			}
 		}
+        Debug.Log(_map);
 	}
 
 	[EasyButtons.Button()]

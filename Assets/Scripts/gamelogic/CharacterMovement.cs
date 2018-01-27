@@ -115,6 +115,7 @@ public class CharacterMovement : MonoBehaviour
                 direction.z = 0;
                 break;
         }
+        transform.localRotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
     private bool CheckCanChange()
