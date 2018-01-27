@@ -14,8 +14,10 @@ public class CharacterMovement : MonoBehaviour
     public float velocity = 5.0f;
     [Tooltip("Size of the buffer used for changing direction")]
     public int sizeBufferDirectionChange = 3;
+    public float timeCollisionThreshold = 0.5f;
+    public bool ignoreAlign;
 
-    [InspectorReadOnly, SerializeField]
+    [Header("Debug"), InspectorReadOnly, SerializeField]
     private Vector3 direction;
 
     [InspectorReadOnly, SerializeField]
@@ -40,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
 
         Signals.Get<CharacterCreated>().Dispatch(this);
-        
+
     }
 
     // Update is called once per frame
@@ -80,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
         if (newDirection == _currentDirection)
             return;
 
-        if(!CheckCanChange())
+        if (!CheckCanChange())
         {
             if (bufferInput) // desconsider if this command was called from buffer
                 return;
@@ -117,16 +119,22 @@ public class CharacterMovement : MonoBehaviour
 
     private bool CheckCanChange()
     {
-        return aligned;
+        return aligned || ignoreAlign;
     }
 
+    private float lastTimeCollision;
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(_currentDirection);
-        // invert direction
-        ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));
+        if (Time.time >= lastTimeCollision)
+        {
+            lastTimeCollision = Time.time + timeCollisionThreshold;
+            // invert direction
+            ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));
+
+        }
+
     }
 
 
-   
+
 }

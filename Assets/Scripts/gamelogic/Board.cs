@@ -9,6 +9,8 @@ public class Board : MonoBehaviour{
     public int _width   = 20;
     public int _height  = 20;
 
+    public float _thresholdAlign = 0.1f;
+
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
 	GameObject[,] _map;
@@ -21,9 +23,9 @@ public class Board : MonoBehaviour{
 	void Update() {
 		for(int i=0;i<_players.Count;++i) {
 			if(_players[i].currentDirection == PlayerInput.Direction.Left || _players[i].currentDirection == PlayerInput.Direction.Right) {
-				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)<0.01f);
+				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)< _thresholdAlign);
 			}else if(_players[i].currentDirection == PlayerInput.Direction.Top || _players[i].currentDirection == PlayerInput.Direction.Bottom) {
-				_players[i].aligned = (GetAlignY(_players[i].transform.position.z)<0.01f);
+				_players[i].aligned = (GetAlignY(_players[i].transform.position.z)< _thresholdAlign);
 			}
 
 

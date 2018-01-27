@@ -37,6 +37,13 @@ public class TileCell : MonoBehaviour{
 
 	}
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        
+        Gizmos.DrawWireCube(transform.position, Vector3.one);
+    }
+
 
 
 };
