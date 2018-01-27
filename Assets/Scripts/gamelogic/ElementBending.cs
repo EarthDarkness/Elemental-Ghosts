@@ -31,7 +31,7 @@ public class ElementBending : MonoBehaviour
         get { return buffed; }
     }
 
-    private bool buffed = false;
+    public bool buffed = false;
 
     // Use this for initialization
     void Start()
