@@ -12,20 +12,26 @@ public class ElementBending : MonoBehaviour
     public bool buffed = false;
     public List<ElementModel> listElement;
 
+    [InspectorReadOnly]
+    private GameObject[] playerModels = new GameObject[6];
 
-    public ElementTable.ElementType elementType
+
+    public float timeDeath = 0.2f;
+
+    public ElementTable.ElementType ElementType
     {
         set
         {
             currentType = value;
             ChangeModel();
-
         }
         get { return currentType; }
     }
-    private ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
-    public bool playerIsBuffed
+
+    public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
+
+    public bool PlayerIsBuffed
     {
         set
         {
@@ -38,7 +44,14 @@ public class ElementBending : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        elementType = ElementTable.ElementType.Neutral;
+
+        ElementType = ElementTable.ElementType.Neutral;
+
+
+        for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
+        {
+            playerModels[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+        }
 
     }
 
@@ -60,13 +73,28 @@ public class ElementBending : MonoBehaviour
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
-        elementType = ElementTable.ElementType.Neutral;
+        ElementType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
+
     }
 
     public void ChangeModel()
     {
         ElementModel.ChangeModel(listElement, currentType);
+
+    }
+
+
+    public void Die()
+    {
+        StartCoroutine(_WaitToDie());
+    }
+
+
+    IEnumerator _WaitToDie()
+    {
+        yield return new WaitForSeconds(timeDeath);
+        gameObject.SetActive(false);
     }
 
 }

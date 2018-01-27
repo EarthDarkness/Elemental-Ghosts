@@ -216,6 +216,7 @@ MonoBehaviour:
   type: 0
   force: 0
   direction: {x: 0, y: 0, z: 0}
+  listElement: []
 --- !u!54 &454994744
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -406,6 +407,7 @@ MonoBehaviour:
   type: 0
   force: 0
   direction: {x: 0, y: 0, z: 0}
+  listElement: []
 --- !u!54 &773633899
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -744,6 +746,8 @@ MonoBehaviour:
   castingTime: 0
   buffed: 0
   listElement: []
+  timeDeath: 0.2
+  currentType: 5
 --- !u!54 &1404821017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1179,6 +1183,8 @@ MonoBehaviour:
   castingTime: 0
   buffed: 0
   listElement: []
+  timeDeath: 0.2
+  currentType: 5
 --- !u!54 &2057705529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1323,6 +1329,11 @@ Prefab:
     - target: {fileID: 4309635995219200, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738584262927696, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: useKeyboard
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}

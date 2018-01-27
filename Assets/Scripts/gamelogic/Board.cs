@@ -52,7 +52,7 @@ public class Board : MonoBehaviour{
 			int py = GetTileX(_players[i].transform.position.z);
 
 			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
-			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().elementType;
+			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
 
 			if(pel != ElementTable.ElementType.Neutral) {
 				if(ElementTable.weakness[(int)pel] == tel) {
@@ -220,7 +220,7 @@ public class Board : MonoBehaviour{
 	}
 
 	void PickElement(ElementBending bend) {
-		if (bend.elementType != ElementTable.ElementType.Neutral)
+		if (bend.ElementType != ElementTable.ElementType.Neutral)
 			return;
 
 		int gix = GetTileX(bend.transform.position.x);
@@ -228,10 +228,12 @@ public class Board : MonoBehaviour{
 
 		ElementTable.ElementType ele = (ElementTable.ElementType)_map[gix, giy].GetComponent<TileCell>()._elementType;
 		_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
-		bend.elementType = ele;
+		bend.ElementType = ele;
 
-		Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
-		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
+        //Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
+        
+        _map[gix, giy].GetComponent<TileCell>()._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
+        _map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);

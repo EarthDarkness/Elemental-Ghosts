@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4659679395779860}
+  - component: {fileID: 114038798686888438}
   m_Layer: 0
   m_Name: Tile_Wood
   m_TagString: Untagged
@@ -155,6 +156,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114038798686888438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103198781709518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f203b85fd6fa5f4c8702af95e57f7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1132379222183826, guid: 6cecc1e9905c87441aa306a38c4ed97a, type: 2}
 --- !u!198 &198705397763597648
 ParticleSystem:
   m_ObjectHideFlags: 1

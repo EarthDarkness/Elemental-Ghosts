@@ -68,7 +68,7 @@ public static class ElementTable
                 return FightState.Destroy;
 
         }
-        else if (fortification[(int)otherElement] == attackerElement)//Atacante perdendo
+        else if (fortification[(int)attackerElement] == otherElement)//Atacante perdendo
         {
             return FightState.Buffed;
         }
@@ -84,6 +84,10 @@ public static class ElementTable
             else if (otherBuffed)
             {
                 return FightState.Nothing;
+            }
+            else if(otherElement == ElementType.Neutral)
+            {
+                return FightState.Destroy;
             }
             else
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitWall : ASignal<Projectile> { }
 public class Projectile : MonoBehaviour
 {
-    
+
     private Rigidbody rb;
 
     public ElementTable.ElementType type;
@@ -14,9 +14,8 @@ public class Projectile : MonoBehaviour
     bool buffed = false;
     public List<ElementModel> listElement;
 
-    Board board;
-
-    public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false ,float force = -1)
+    
+    public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false, float force = -1)
     {
         if (force != -1)
             this.force = force;
@@ -41,10 +40,11 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ElementBending elementBending = other.GetComponent<ElementBending>();
-            ElementTable.ElementType otherElement = elementBending.elementType;
-            bool otherBuff = elementBending.playerIsBuffed;
-            ResolveInteraction(elementBending, ElementTable.GetProjectileResult(type, otherElement,buffed,otherBuff));
+            ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
+            Debug.Log(type + " x " + otherPlayerElement.ElementType);
+            ResolveInteraction(otherPlayerElement, ElementTable.GetProjectileResult(type, otherPlayerElement.ElementType, buffed, otherPlayerElement.PlayerIsBuffed));
+            Spawner._count -= 1;
+
             Destroy(this.gameObject);
         }
         else
@@ -55,11 +55,14 @@ public class Projectile : MonoBehaviour
 
     void ResolveInteraction(ElementBending other, ElementTable.FightState result)
     {
+        Debug.Log(result);
         switch (result)
         {
             case ElementTable.FightState.Annulment:
+                other.ElementType = ElementTable.ElementType.Neutral;
                 break;
             case ElementTable.FightState.Buffed:
+                other.PlayerIsBuffed = true;
                 break;
             case ElementTable.FightState.Destroy:
                 other.GetComponent<PlayerData>().Die();

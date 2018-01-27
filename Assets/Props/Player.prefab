@@ -633,6 +633,8 @@ MonoBehaviour:
     elementType: 4
   - gameObject: {fileID: 1236706942041212}
     elementType: 5
+  timeDeath: 0.2
+  currentType: 5
 --- !u!136 &136121957096660852
 CapsuleCollider:
   m_ObjectHideFlags: 1
