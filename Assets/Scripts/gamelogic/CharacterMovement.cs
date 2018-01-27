@@ -5,22 +5,12 @@ using UniversalNetworkInput;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public enum Direction
-    {
-        None, Top, Right, Bottom, Left
-    }
-    [Header("Player Setting")]
-    public bool useKeyboard;
-    [ShowIf("UsingController")]
-    public int playerNumber;
 
     [Header("Initial Setup"), Tooltip("Only applicable before the start of the game")]
-    public Direction initialDirection;
+    public PlayerInput.Direction initialDirection;
 
     [Header("Controller Setup"), Tooltip("Velocity of the player")]
     public float velocity = 5.0f;
-    [Tooltip("Which rate the control will consider as a input")]
-    public float controlRate = 0.8f;
     [Tooltip("Size of the buffer used for changing direction")]
     public int sizeBufferDirectionChange = 3;
 
@@ -28,8 +18,8 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 direction;
 
     [InspectorReadOnly, SerializeField]
-    private Direction currentDirection;
-    private Direction nextDirection;
+    private PlayerInput.Direction currentDirection;
+    private PlayerInput.Direction nextDirection;
     private int bufferDirectionChange;
     private new Rigidbody rigidbody;
     private Vector3 tempVector;
@@ -38,22 +28,16 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         bufferDirectionChange = 0;
-        currentDirection = Direction.None;
-        nextDirection = Direction.None;
+        currentDirection = PlayerInput.Direction.None;
+        nextDirection = PlayerInput.Direction.None;
 
         ChangeDirection(initialDirection);
         rigidbody = GetComponent<Rigidbody>();
     }
-#if UNITY_EDITOR
-    private bool UsingController(Object nu)
-    {
-        return !useKeyboard;
-    }
-#endif
+
     // Update is called once per frame
     void Update()
     {
-        UpdateInput();
         UpdateBuffer();
         CalculateVelocity();
     }
@@ -65,38 +49,6 @@ public class CharacterMovement : MonoBehaviour
         tempVector.z = direction.z * velocity;
         rigidbody.velocity = tempVector;
     }
-
-    private float tempH, tempV;
-    private void UpdateInput()
-    {
-        if (useKeyboard)
-        {
-            tempH = Input.GetAxis("Horizontal");
-            tempV = Input.GetAxis("Vertical");
-        }
-        else
-        {
-            tempH = UNInput.GetAxis(playerNumber, AxisCode.LSH);
-            tempV = UNInput.GetAxis(playerNumber, AxisCode.LSV);
-        }
-
-        if (Mathf.Abs(tempH) > controlRate)
-        {
-            if (tempH > 0)
-                ChangeDirection(Direction.Right);
-            else
-                ChangeDirection(Direction.Left);
-        }
-        else if (Mathf.Abs(tempV) > controlRate)
-        {
-            if (tempV > 0)
-                ChangeDirection(Direction.Top);
-            else
-                ChangeDirection(Direction.Bottom);
-        }
-
-    }
-
 
     public void UpdateBuffer()
     {
@@ -111,7 +63,11 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void ChangeDirection(Direction newDirection, bool bufferInput = false)
+    private void ChangeDirection(PlayerInput.Direction newDirection)
+    {
+        ChangeDirection(newDirection, false);
+    }
+    private void ChangeDirection(PlayerInput.Direction newDirection, bool bufferInput)
     {
         if (newDirection == currentDirection)
             return;
@@ -128,23 +84,23 @@ public class CharacterMovement : MonoBehaviour
         }
 
         bufferDirectionChange = 0;
-        nextDirection = Direction.None;
+        nextDirection = PlayerInput.Direction.None;
         currentDirection = newDirection;
         switch (newDirection)
         {
-            case Direction.Top:
+            case PlayerInput.Direction.Top:
                 direction.x = 0;
                 direction.z = 1;
                 break;
-            case Direction.Right:
+            case PlayerInput.Direction.Right:
                 direction.x = 1;
                 direction.z = 0;
                 break;
-            case Direction.Bottom:
+            case PlayerInput.Direction.Bottom:
                 direction.x = 0;
                 direction.z = -1;
                 break;
-            case Direction.Left:
+            case PlayerInput.Direction.Left:
                 direction.x = -1;
                 direction.z = 0;
                 break;
