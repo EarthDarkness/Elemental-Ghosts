@@ -4,7 +4,7 @@
 public class HitWall : ASignal<Projectile> { }
 public class Projectile : MonoBehaviour
 {
-    
+
     private Rigidbody rb;
 
     public ElementTable.ElementType type;
@@ -12,9 +12,9 @@ public class Projectile : MonoBehaviour
     public Vector3 direction;
     bool buffed = false;
 
-    Board board;
+    ElementBending otherPlayerElement;
 
-    public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false ,float force = -1)
+    public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false, float force = -1)
     {
         if (force != -1)
             this.force = force;
@@ -37,9 +37,10 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ElementTable.ElementType otherElement = other.GetComponent<ElementBending>().elementType;
-            bool otherBuff = other.GetComponent<ElementBending>().playerIsBuffed;
-            ResolveInteraction(ElementTable.GetProjectileResult(type, otherElement,buffed,otherBuff));
+            otherPlayerElement = other.GetComponent<ElementBending>();
+            Debug.Log(type + " x " + otherPlayerElement.elementType);
+            ResolveInteraction(ElementTable.GetProjectileResult(type, otherPlayerElement.elementType, buffed, otherPlayerElement.playerIsBuffed));
+            Spawner._count -= 1;
             Destroy(this.gameObject);
         }
         else
@@ -50,13 +51,17 @@ public class Projectile : MonoBehaviour
 
     void ResolveInteraction(ElementTable.FightState result)
     {
+        Debug.Log(result);
         switch (result)
         {
             case ElementTable.FightState.Annulment:
+                otherPlayerElement.elementType = ElementTable.ElementType.Neutral;
                 break;
             case ElementTable.FightState.Buffed:
+                otherPlayerElement.playerIsBuffed = true;
                 break;
             case ElementTable.FightState.Destroy:
+                otherPlayerElement.gameObject.SetActive(false);
                 break;
             case ElementTable.FightState.Nothing:
                 break;

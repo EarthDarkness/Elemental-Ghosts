@@ -11,16 +11,23 @@ public class ElementBending : MonoBehaviour
     [InspectorReadOnly]
     private Coroutine castRoutine;
 
+    [InspectorReadOnly]
+    private GameObject[] playerModels = new GameObject[6];
+
+    
     public ElementTable.ElementType elementType
     {
         set
         {
             currentType = value;
-            SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
+            ChangePlayerElement();
+            //SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
         }
         get { return currentType; }
     }
-    private ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
+
+   
+    public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
     public bool playerIsBuffed
     {
@@ -37,6 +44,12 @@ public class ElementBending : MonoBehaviour
     void Start()
     {
         currentType = ElementTable.ElementType.Neutral;
+
+        for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
+        {
+            playerModels[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+        }
+        ChangePlayerElement();
     }
 
 
@@ -59,6 +72,23 @@ public class ElementBending : MonoBehaviour
         newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
         currentType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
-        SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
+        ChangePlayerElement();
+        //SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
     }
+
+    void ChangePlayerElement()
+    {
+        DeactivateModels();
+        playerModels[(int)elementType].SetActive(true);
+
+    }
+
+    void DeactivateModels()
+    {
+        for (int i = 0; i < playerModels.Length; i++)
+        {
+            playerModels[i].SetActive(false);
+        }
+    }
+
 }

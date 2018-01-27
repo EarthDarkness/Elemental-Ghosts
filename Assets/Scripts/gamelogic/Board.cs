@@ -230,8 +230,10 @@ public class Board : MonoBehaviour{
 		_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
 		bend.elementType = ele;
 
-		Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
-		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
+        //Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
+        
+        _map[gix, giy].GetComponent<TileCell>()._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
+        _map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);
