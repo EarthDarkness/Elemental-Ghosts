@@ -30,7 +30,7 @@ public class Board : MonoBehaviour{
 	}
 	void Start() {
 		Signals.Get<PickupElement>().AddListener(PickElement);
-		Signals.Get<HitWalk>().AddListener(DropElement);
+		Signals.Get<HitWall>().AddListener(DropElement);
 	}
 	void Update() {
 		for(int i=0;i<_players.Count;++i) {
