@@ -18,7 +18,9 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 direction;
 
     [InspectorReadOnly, SerializeField]
-    private PlayerInput.Direction currentDirection;
+    private PlayerInput.Direction _currentDirection;
+    public PlayerInput.Direction currentDirection { get { return _currentDirection; } }
+
     private PlayerInput.Direction nextDirection;
     private int bufferDirectionChange;
     private new Rigidbody rigidbody;
@@ -30,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         bufferDirectionChange = 0;
-        currentDirection = PlayerInput.Direction.None;
+        _currentDirection = PlayerInput.Direction.None;
         nextDirection = PlayerInput.Direction.None;
 
         ChangeDirection(initialDirection);
@@ -71,7 +73,7 @@ public class CharacterMovement : MonoBehaviour
     }
     private void ChangeDirection(PlayerInput.Direction newDirection, bool bufferInput)
     {
-        if (newDirection == currentDirection)
+        if (newDirection == _currentDirection)
             return;
 
         if(!CheckCanChange())
@@ -87,7 +89,7 @@ public class CharacterMovement : MonoBehaviour
 
         bufferDirectionChange = 0;
         nextDirection = PlayerInput.Direction.None;
-        currentDirection = newDirection;
+        _currentDirection = newDirection;
         switch (newDirection)
         {
             case PlayerInput.Direction.Top:
@@ -116,8 +118,9 @@ public class CharacterMovement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(_currentDirection);
         // invert direction
-        //ChangeDirection((PlayerInput.Direction)((((int)currentDirection) + 2) % 4));
+        ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));
     }
 
 
