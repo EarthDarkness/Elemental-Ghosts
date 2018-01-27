@@ -16,6 +16,8 @@ public class Board : MonoBehaviour{
 	public static float _fastSpeed = 2.0f;
 	
 	public static float _boost = 2.0f;
+	public static float _recoveryRate = 4.0f;
+
 
 
     [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
@@ -57,12 +59,25 @@ public class Board : MonoBehaviour{
 					_players[i].velocity = CharacterMovement.baseVelocity*_slowSpeed;
 					if(_players[i].transform.GetComponent<ElementBending>().buffed)
 						_players[i].velocity *= _boost;
-				}else if(ElementTable.fortification[(int)pel] == tel) {
+				}else if(ElementTable.fortification[(int)tel] == pel) {
 					_players[i].velocity = CharacterMovement.baseVelocity*_fastSpeed;
 					if(_players[i].transform.GetComponent<ElementBending>().buffed)
 						_players[i].velocity *= _boost;
 				}else {
-					_players[i].velocity = CharacterMovement.baseVelocity;
+					if(Mathf.Abs(_players[i].velocity-CharacterMovement.baseVelocity) > 0.01f) {
+						if(_players[i].velocity < CharacterMovement.baseVelocity) {
+							_players[i].velocity += Time.deltaTime*_recoveryRate;
+							if(_players[i].velocity > CharacterMovement.baseVelocity) {
+								_players[i].velocity = CharacterMovement.baseVelocity;
+							}
+						}else if(_players[i].velocity > CharacterMovement.baseVelocity) {
+							_players[i].velocity -= Time.deltaTime*_recoveryRate;
+							if(_players[i].velocity < CharacterMovement.baseVelocity) {
+								_players[i].velocity = CharacterMovement.baseVelocity;
+							}
+						}
+						
+					}
 				}
 			}
 		}
@@ -70,7 +85,7 @@ public class Board : MonoBehaviour{
 
 	public bool SpawnElement(int x, int y, int element) {
 		//Debug.Log(element.ToString());
-		Debug.Log(_map[x, y].GetComponent<TileCell>()._elementType);
+		//Debug.Log(_map[x, y].GetComponent<TileCell>()._elementType);
 		if (_map[x, y].GetComponent<TileCell>()._elementType != (int)ElementTable.ElementType.Neutral)
 			return false;
 		//if (_map[x, y].GetComponent<TileCell>().GetComponentInChildren<Collider>() != null)
