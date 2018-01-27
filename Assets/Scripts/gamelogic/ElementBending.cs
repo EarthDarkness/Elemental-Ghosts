@@ -8,13 +8,17 @@ public class ElementBending : MonoBehaviour
 
     public GameObject projectile;
     public float castingTime;
-    [InspectorReadOnly]
     private Coroutine castRoutine;
 
+<<<<<<< HEAD
     [InspectorReadOnly]
     private GameObject[] playerModels = new GameObject[6];
 
     
+=======
+    public float timeDeath = 0.2f;
+
+>>>>>>> 2db30dc82a0e1694be626a15298c95fe7ea356fc
     public ElementTable.ElementType elementType
     {
         set
@@ -53,7 +57,7 @@ public class ElementBending : MonoBehaviour
     }
 
 
-    private void Action()
+    public void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
@@ -91,4 +95,20 @@ public class ElementBending : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+=======
+    public void Die()
+    {
+        // Animate
+        // Particles
+        // 
+        StartCoroutine(_WaitToDie());
+    }
+
+    public IEnumerator _WaitToDie()
+    {
+        yield return new WaitForSeconds(timeDeath);
+        gameObject.SetActive(false);
+    }
+>>>>>>> 2db30dc82a0e1694be626a15298c95fe7ea356fc
 }

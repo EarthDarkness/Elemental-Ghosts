@@ -12,8 +12,7 @@ public class Projectile : MonoBehaviour
     public Vector3 direction;
     bool buffed = false;
 
-    ElementBending otherPlayerElement;
-
+    
     public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false, float force = -1)
     {
         if (force != -1)
@@ -37,10 +36,11 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            otherPlayerElement = other.GetComponent<ElementBending>();
+            ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
             Debug.Log(type + " x " + otherPlayerElement.elementType);
-            ResolveInteraction(ElementTable.GetProjectileResult(type, otherPlayerElement.elementType, buffed, otherPlayerElement.playerIsBuffed));
+            ResolveInteraction(otherPlayerElement, ElementTable.GetProjectileResult(type, otherPlayerElement.elementType, buffed, otherPlayerElement.playerIsBuffed));
             Spawner._count -= 1;
+
             Destroy(this.gameObject);
         }
         else
@@ -49,19 +49,19 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void ResolveInteraction(ElementTable.FightState result)
+    void ResolveInteraction(ElementBending other, ElementTable.FightState result)
     {
         Debug.Log(result);
         switch (result)
         {
             case ElementTable.FightState.Annulment:
-                otherPlayerElement.elementType = ElementTable.ElementType.Neutral;
+                other.elementType = ElementTable.ElementType.Neutral;
                 break;
             case ElementTable.FightState.Buffed:
-                otherPlayerElement.playerIsBuffed = true;
+                other.playerIsBuffed = true;
                 break;
             case ElementTable.FightState.Destroy:
-                otherPlayerElement.gameObject.SetActive(false);
+                other.Die();
                 break;
             case ElementTable.FightState.Nothing:
                 break;
