@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasRenderer))]
 [ExecuteInEditMode]
-public class UIGradient : Graphic {
+public class UIGradient : Image {
 	
 	public  Texture mainTexture{get{ return mainTexture;}}
 
@@ -31,15 +31,15 @@ public class UIGradient : Graphic {
 	public List<Color> colors;
 
 
-
-	void Reset () {
+	[ContextMenu("Reset Colors")]
+	public void Reset () {
 
 
 		colors = new List<Color>();
-		colors [0] = Color.white;
-		colors [1] = Color.white;
-		colors [2] = Color.white;
-		colors [3] = Color.white;
+		colors.Add( Color.white);
+		colors.Add(Color.white);
+		colors.Add(Color.white);
+		colors.Add(Color.white);
 
 
 	}
@@ -118,6 +118,8 @@ public class UIGradient : Graphic {
     }
 	// Update is called once per frame
 	void Update () {
+		
+		 UpdateGeometry();
 		/*
 		mesh.Clear ();
 
