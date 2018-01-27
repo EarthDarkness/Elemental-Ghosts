@@ -91,8 +91,8 @@ public class Board : MonoBehaviour{
 		//if (_map[x, y].GetComponent<TileCell>().GetComponentInChildren<Collider>() != null)
 		//	return false;
 
-		//if (_map[x, y].GetComponent<TileCell>()._component.Count > 0)
-		//	return false;
+		if (_map[x, y].GetComponent<TileCell>()._component.Count > 0)
+			return false;
 
 		_map[x, y].GetComponent<TileCell>()._elementType = element;
 		_map[x, y].GetComponent<TileCell>()._elementVisual = Instantiate(_tilePrefab[element],_map[x, y].transform);
@@ -234,23 +234,68 @@ public class Board : MonoBehaviour{
 		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
 	}
 	void DropElement(Projectile shot) {
-		Projectile pj = shot.GetComponent<Projectile>();
-
 		int gix = GetTileX(shot.transform.position.x);
 		int giy = GetTileX(shot.transform.position.z);
 
-		int nElement = (int)pj.type;
-		int cElement = _map[gix, giy].GetComponent<TileCell>()._elementType;
+		if (gix < 0)
+			gix = 0;
+		if (gix >= _width)
+			gix = _width-1;
+		if (giy < 0)
+			giy = 0;
+		if (giy >= _height)
+			giy = _height-1;
+
+		int dx = 0;
+		int dy = 0;
+
+		//Debug.Log(gix + " " + giy);
+
+		if(Mathf.Abs(shot.direction.x) > Mathf.Abs(shot.direction.z)) {
+			if(shot.direction.x > 0.0f) {
+				dx-=1;
+			}else {
+				dx+=1;
+			}
+		}else {
+			if(shot.direction.z > 0.0f) {
+				dy-=1;
+			}else {
+				dy+=1;
+			}
+		}
+		
+		int nx = gix;
+		int ny = giy;
+		//Debug.Log((_map[nx, ny].GetComponent<TileCell>() != null));
+		while(_map[nx, ny].GetComponent<TileCell>()._component.Count > 0) {
+			nx += dx;
+			ny += dy;
+		}
+		//Debug.Log(gix + " " + giy);
+		TileCell tc = _map[nx, ny].GetComponent<TileCell>();
+
+		int nElement = (int)shot.type;
+		int cElement = tc._elementType;
 		--Spawner._count;
-		if ((int)ElementTable.weakness[cElement] == nElement) {
-			_map[gix, giy].GetComponent<TileCell>()._elementType = nElement;
+		if(cElement == 5) {
+			tc._elementType = nElement;
+			tc._elementVisual = Instantiate(_tilePrefab[nElement],tc.transform);
+		}else if ((int)ElementTable.weakness[cElement] == nElement) {
+			tc._elementType = nElement;
+			Destroy(tc._elementVisual);
+			tc._elementVisual = Instantiate(_tilePrefab[nElement],tc.transform);
 		} else if ((int)ElementTable.weakness[nElement] == cElement) {
 			//stay same
 		} else {
-			_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
+			Destroy(tc._elementVisual);//no element
+			tc._elementVisual = null;
+			tc._elementType = 5;//no element
 			--Spawner._count;
 		}
-
+		//tc._elementType = nElement;
+		//tc._elementVisual = Instantiate(_tilePrefab[nElement],_map[nx, ny].transform);
+		Destroy(shot.transform.gameObject);
 	}
 
 	void join(CharacterMovement cm) {
