@@ -119,6 +119,7 @@ public class Board : MonoBehaviour{
 
 		float minx = -(_width*_dim[0])/2;
 		float miny = -(_height*_dim[1])/2;
+		
 		if(_map == null)
 			_map = new GameObject[_width,_height];
 
@@ -129,7 +130,7 @@ public class Board : MonoBehaviour{
 				for(int i=0;i<_width;++i) {
 					if(line.transform.childCount > i) {
 						_map[i, j] = line.transform.GetChild(i).gameObject;
-                        _map[i, j].GetComponent<TileCell>().Reset();
+                        //_map[i, j].GetComponent<TileCell>().Reset();
                     }
                     else {
 						_map[i,j] = new GameObject();

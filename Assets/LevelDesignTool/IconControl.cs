@@ -17,7 +17,7 @@ public class IconControl : MonoBehaviour {
 		GameObject go = Instantiate(_iconPrefab, p);
 		go.GetComponent<Icon>().Setup(x,y,sign);
 		go.GetComponent<Icon>()._ctrl = this;
-		go.transform.position = new Vector3(px, 1.1f, py);
+		go.transform.position = new Vector3(px, 3.1f, py);
 	}
 
 	public void Deploy(int w, int h, float xdim, float ydim) {
