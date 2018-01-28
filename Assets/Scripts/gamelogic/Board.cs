@@ -51,6 +51,7 @@ public class Board : MonoBehaviour
         Signals.Get<CharacterCreated>().RemoveListener(join);
 
     }
+
     void Update()
     {
         for (int i = 0; i < _players.Count; ++i)
@@ -68,7 +69,7 @@ public class Board : MonoBehaviour
             }
 
             int px = GetTileX(_players[i].transform.position.x);
-            int py = GetTileX(_players[i].transform.position.z);
+            int py = GetTileY(_players[i].transform.position.z);
 
             EType tel = _map[px, py].GetComponent<TileCell>()._elementType;
             EType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
@@ -237,6 +238,7 @@ public class Board : MonoBehaviour
         /*for(int i=transform.childCount-1;i>=0;++i) {
 			DestroyImmediate(transform.GetChild(i).gameObject);
 		}*/
+
         while (transform.childCount > 0)
         {
             DestroyImmediate(transform.GetChild(transform.childCount - 1).gameObject);
@@ -289,7 +291,7 @@ public class Board : MonoBehaviour
             return;
 
         int gix = GetTileX(bend.transform.position.x);
-        int giy = GetTileX(bend.transform.position.z);
+        int giy = GetTileY(bend.transform.position.z);
 
         TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
 
@@ -306,13 +308,14 @@ public class Board : MonoBehaviour
                 tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
             tileCell._elementVisual = null;
         }
+
         if (bend.ElementType != EType.Neutral)
             bend.elementalPickup = 0.0f;
     }
     void DropElement(Projectile shot)
     {
         int gix = GetTileX(shot.transform.position.x);
-        int giy = GetTileX(shot.transform.position.z);
+        int giy = GetTileY(shot.transform.position.z);
 
         if (gix < 0)
             gix = 0;

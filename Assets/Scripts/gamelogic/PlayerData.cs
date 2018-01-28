@@ -61,6 +61,9 @@ public class PlayerData : MonoBehaviour
         AudioManager.Instance.PlaySound("Death");
         alive = false;
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
+
+        
+
         // Animate
         animator.SetTrigger("Die");
         // Particles
