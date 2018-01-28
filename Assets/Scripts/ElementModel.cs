@@ -7,7 +7,7 @@ public class ElementModel
 {
 
     public GameObject gameObject;
-    public ElementTable.ElementType elementType;
+    public EType elementType;
 
     public void SetActive(bool active)
     {
@@ -15,7 +15,7 @@ public class ElementModel
 
     }
 
-    public static void ChangeModel(List<ElementModel> list, ElementTable.ElementType elementType)
+    public static void ChangeModel(List<ElementModel> list, EType elementType)
     {
         for (int i = 0; i < list.Count; i++)
         {

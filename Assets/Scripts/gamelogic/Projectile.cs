@@ -8,14 +8,14 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody rb;
 
-    public ElementTable.ElementType type;
+    public EType type;
     public float force;
     public Vector3 direction;
     bool buffed = false;
     public List<ElementModel> listElement;
     private PlayerData parent;
 
-    public void Initialize(PlayerData parent, Vector3 direction, ElementTable.ElementType elementType,
+    public void Initialize(PlayerData parent, Vector3 direction, EType elementType,
         bool buffed = false, float force = -1)
     {
         this.parent = parent;
@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         {
             ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
             Debug.Log(type + " x " + otherPlayerElement.ElementType);
-            ResolveInteraction(otherPlayerElement, ElementTable.GetProjectileResult(type, otherPlayerElement.ElementType, buffed, otherPlayerElement.PlayerIsBuffed));
+            ResolveInteraction(otherPlayerElement, Conflic.GetProjectileResult(type, otherPlayerElement.ElementType, buffed, otherPlayerElement.PlayerIsBuffed));
             Spawner._count -= 1;
 
             Destroy(this.gameObject);
@@ -55,23 +55,16 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void ResolveInteraction(ElementBending other, ElementTable.FightState result)
+    void ResolveInteraction(ElementBending other, EResult result)
     {
-        Debug.Log(result);
-        switch (result)
-        {
-            case ElementTable.FightState.Annulment:
-                other.ElementType = ElementTable.ElementType.Neutral;
-                break;
-            case ElementTable.FightState.Buffed:
-                other.PlayerIsBuffed = true;
-                break;
-            case ElementTable.FightState.Destroy:
-                other.GetComponent<PlayerData>().Die(parent);
-                break;
-            case ElementTable.FightState.Nothing:
-                break;
-        }
+		if(result == EResult.B_Damage) {
+			other.GetComponent<PlayerData>().Die(parent);
+		}else if(result == EResult.B_Buff) {
+			other.PlayerIsBuffed = true;
+		}else {
+
+		}
+
     }
 
 }

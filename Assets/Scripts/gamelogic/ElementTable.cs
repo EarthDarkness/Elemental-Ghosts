@@ -2,6 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EType {
+	Fire = 0,
+    Metal,
+    Wood,
+    Earth,
+    Water,
+    Neutral
+}
+public enum EResult {
+	Nothing=0,
+	A_Buff,
+	A_Damage,	//a take damage
+	B_Buff,
+	B_Damage	//b take damage
+
+}
+
+public class ETable {
+						//[A-Row,B-Col]
+	public static EResult[,] _contatct = {
+		{	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.B_Damage	},
+		{	EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.B_Damage	},
+		{	EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Damage	},
+		{	EResult.B_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.B_Damage	},
+		{	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage	},
+		{	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.Nothing		}
+	};
+
+	public static EResult[] _inverse = {
+		EResult.Nothing, EResult.B_Buff, EResult.A_Damage, EResult.A_Buff, EResult.A_Damage
+	};
+	public static EResult[] _upgradeA = {
+		EResult.B_Damage, EResult.Nothing, EResult.Nothing, EResult.B_Buff, EResult.B_Damage
+	};
+};
+/*
 public static class ElementTable
 {
     public enum FightState
@@ -49,7 +85,7 @@ public static class ElementTable
                 ElementType.Fire,
                 ElementType.Neutral
     };
-
+	*/
     /// <summary>
     /// Function that returns the interaction between projectile and player elements.
     /// </summary>
@@ -57,43 +93,13 @@ public static class ElementTable
     /// <param name="otherElement">The other player element.</param>
     /// <param name="attackerBuffed">Is attacker player buffed</param>
     /// <param name="otherBuffed">Is other player buffed</param>
-
-    public static FightState GetProjectileResult(ElementType attackerElement, ElementType otherElement, bool attackerBuffed = false, bool otherBuffed = false)
+public class Conflic {
+    public static EResult GetProjectileResult(EType attackerElement, EType otherElement, bool attackerBuffed = false, bool otherBuffed = false)
     {
-        if (weakness[(int)otherElement] == attackerElement) //Atacando ganhando
-        {
-            if (otherBuffed)
-                return FightState.Annulment;
-            else
-                return FightState.Destroy;
-
-        }
-        else if (fortification[(int)attackerElement] == otherElement)//Atacante perdendo
-        {
-            return FightState.Buffed;
-        }
-        else //Empate
-        {
-            if (attackerBuffed)
-            {
-                if (otherBuffed)
-                    return FightState.Annulment;
-                else
-                    return FightState.Destroy;
-            }
-            else if (otherBuffed)
-            {
-                return FightState.Nothing;
-            }
-            else if(otherElement == ElementType.Neutral)
-            {
-                return FightState.Destroy;
-            }
-            else
-            {
-                return FightState.Annulment;
-            }
-        }
+		EResult res = ETable._contatct[(int)attackerElement,(int)otherElement];
+		if (res == EResult.A_Buff || res == EResult.A_Damage)
+			res = EResult.Nothing;
+		return res;
     }
 
     /// <summary>
@@ -104,7 +110,7 @@ public static class ElementTable
     /// <param name="firstElementBuffed">Is first player buffed</param>
     /// <param name="secondElementBuffed">Is second player buffed</param>
 
-    public static CollisionState GetCollisionResult(ElementType firstElement, ElementType secondElement, bool firstElementBuffed = false, bool secondElementBuffed = false)
+    /*public static CollisionState GetCollisionResult(ElementType firstElement, ElementType secondElement, bool firstElementBuffed = false, bool secondElementBuffed = false)
     {
         if (firstElementBuffed)
         {
@@ -141,6 +147,6 @@ public static class ElementTable
             else
                 return CollisionState.Nothing;
         }
-    }
+    }*/
 
 }
