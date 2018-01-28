@@ -39,8 +39,10 @@ public class PlayerInput : MonoBehaviour {
     void Update () {
         if (useKeyboard)
         {
-            tempH = Input.GetAxisRaw("Horizontal");
-            tempV = Input.GetAxisRaw("Vertical");
+            tempH = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) ? 1 :
+                Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) ? -1 : 0;
+            tempV = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) ? 1 :
+                Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) ? -1 : 0;
             action = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.X);
         }
         else

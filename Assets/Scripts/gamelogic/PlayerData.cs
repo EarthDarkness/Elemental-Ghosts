@@ -22,9 +22,9 @@ public class PlayerData : MonoBehaviour
     public PlayerId playerId;
     public float timeDeath = 0.2f;
     public int killScore = 0;
-    public int roundScore = 0;
-
-    public void Start()
+    public int matchScore = 0;
+    public bool alive = true;
+    public void Awake()
     {
         if (PersisterPlayerInputInfo.players != null)
         {
@@ -35,7 +35,14 @@ public class PlayerData : MonoBehaviour
             }
             GetComponent<PlayerInput>().joystickId = PersisterPlayerInputInfo.players[playerId];
         }
+        alive = true;
+        MatchManager.Instance.AddPlayer(this);
         Signals.Get<PlayerKilled>().AddListener(CheckDeath);
+    }
+
+    private void OnDestroy()
+    {
+        Signals.Get<PlayerKilled>().RemoveListener(CheckDeath);
     }
 
     private void CheckDeath(PlayerData killer, PlayerData vitimn)
@@ -48,6 +55,7 @@ public class PlayerData : MonoBehaviour
 
     public void Die(PlayerData killer)
     {
+        alive = false;
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
         // Animate
         // Particles
@@ -58,5 +66,11 @@ public class PlayerData : MonoBehaviour
     {
         yield return new WaitForSeconds(timeDeath);
         gameObject.SetActive(false);
+    }
+
+    internal void Ressurect()
+    {
+        gameObject.SetActive(true);
+        alive = true;
     }
 }

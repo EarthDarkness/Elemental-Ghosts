@@ -40,7 +40,15 @@ public class Board : MonoBehaviour{
 		Signals.Get<PickupElement>().AddListener(PickElement);
 		Signals.Get<HitWall>().AddListener(DropElement);
 	}
-	void Update() {
+
+    private void OnDestroy()
+    {
+        Signals.Get<PickupElement>().RemoveListener(PickElement);
+        Signals.Get<HitWall>().RemoveListener(DropElement);
+        Signals.Get<CharacterCreated>().RemoveListener(join);
+
+    }
+    void Update() {
 		for(int i=0;i<_players.Count;++i) {
 			if(_players[i].currentDirection == PlayerInput.Direction.Left || _players[i].currentDirection == PlayerInput.Direction.Right) {
 				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)< _thresholdAlign);
