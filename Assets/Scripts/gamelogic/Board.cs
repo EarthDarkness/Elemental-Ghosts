@@ -259,6 +259,8 @@ public class Board : MonoBehaviour{
                 tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
             tileCell._elementVisual = null;
         }
+
+		bend.elementalPickup = 0.0f;
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);

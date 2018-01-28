@@ -18,22 +18,11 @@ public class ElementBending : MonoBehaviour
 	public static float pickupbasetimer = 0.5f;
 	public float elementalPickup = 0.0f;
 
-    public ElementTable.ElementType elementType
+	public ElementTable.ElementType ElementType;
 
     public float timeDeath = 0.2f;
 
     private PlayerData playerData;
-
-    public ElementTable.ElementType ElementType
-    {
-        set
-        {
-            currentType = value;
-            ChangeModel();
-        }
-        get { return currentType; }
-    }
-
 
     public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
