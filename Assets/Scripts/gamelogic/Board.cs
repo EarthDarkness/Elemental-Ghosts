@@ -24,7 +24,7 @@ public class Board : MonoBehaviour{
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
     [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
-    GameObject[,] _map;
+    public GameObject[,] _map;
 	void Awake() {
         if(_map == null)
         {
@@ -50,6 +50,9 @@ public class Board : MonoBehaviour{
     }
     void Update() {
 		for(int i=0;i<_players.Count;++i) {
+			if(_players[i].GetComponent<ElementBending>().elementalPickup > 0.0f)
+				PickElement(_players[i].GetComponent<ElementBending>());
+
 			if(_players[i].currentDirection == PlayerInput.Direction.Left || _players[i].currentDirection == PlayerInput.Direction.Right) {
 				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)< _thresholdAlign);
 			}else if(_players[i].currentDirection == PlayerInput.Direction.Top || _players[i].currentDirection == PlayerInput.Direction.Bottom) {
@@ -171,6 +174,12 @@ public class Board : MonoBehaviour{
 				_map[i, j].name = "Col "+i.ToString();
 			}
 		}
+		IconControl icc = this.transform.GetComponent<IconControl>();  
+		if(icc != null) {  
+			icc._container = this;  
+			icc.Deploy(_width, _height, _dim[0], _dim[1]);  
+		}  
+
 
 	}
 	[EasyButtons.Button()]
@@ -249,6 +258,8 @@ public class Board : MonoBehaviour{
                 tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
             tileCell._elementVisual = null;
         }
+		if((int)bend.ElementType != 5) 
+			bend.elementalPickup = 0.0f; 
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);
@@ -289,7 +300,7 @@ public class Board : MonoBehaviour{
 			nx += dx;
 			ny += dy;
 		}
-		//Debug.Log(gix + " " + giy);
+		Debug.Log(nx + " " + ny);
 		TileCell tc = _map[nx, ny].GetComponent<TileCell>();
 
 		int nElement = (int)shot.type;
