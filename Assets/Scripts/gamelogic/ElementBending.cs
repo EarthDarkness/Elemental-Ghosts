@@ -89,7 +89,7 @@ public class ElementBending : MonoBehaviour
     public void ResetStates()
     {
         ElementType = EType.Neutral;
-        DisableAura();
+        DisabpleAura();
     }
 
     public void ChangeModel()

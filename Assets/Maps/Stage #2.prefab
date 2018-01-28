@@ -44259,8 +44259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lock: 0
-  _component: []
-  _elementVisual: {fileID: 1740325568210344}
+  _component:
+  - {fileID: 1740325568210344}
+  _elementVisual: {fileID: 0}
   _elementType: 0
 --- !u!114 &114089866605611428
 MonoBehaviour:
@@ -50054,8 +50055,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lock: 0
-  _component: []
-  _elementVisual: {fileID: 1880661703898208}
+  _component:
+  - {fileID: 1880661703898208}
+  _elementVisual: {fileID: 0}
   _elementType: 0
 --- !u!114 &114592406150873498
 MonoBehaviour:

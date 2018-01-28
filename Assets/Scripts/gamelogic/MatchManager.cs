@@ -10,6 +10,10 @@ public class MatchManager : Singleton<MatchManager>
     public float timeToRespawn = 3.0f;
     public TMPro.TextMeshProUGUI countdownUI;
     public List<PlayerData> playerList = new List<PlayerData>();
+    public GameObject endGameUi;
+    public GameObject matchEndUi;
+    public PlayerData.PlayerId lastWinnerId;
+    private bool lastRound = false;
     // Use this for initialization
     void Start()
     {
@@ -26,20 +30,24 @@ public class MatchManager : Singleton<MatchManager>
     private void CheckWinCondition(PlayerData arg1, PlayerData arg2)
     {
         int count = 0;
-        for(int i = 0; i < playerList.Count; i++)
+        for (int i = 0; i < playerList.Count; i++)
         {
             count += playerList[i].alive ? 1 : 0;
             if (count > 1)
                 return;
         }
-        int winner = 0;
+
         // give score
         for (int i = 0; i < playerList.Count; i++)
         {
-            if(playerList[i].alive)
+            if (playerList[i].alive)
             {
-                winner = i;
+                lastWinnerId = playerList[i].playerId;
                 playerList[i].matchScore++;
+                if (playerList[i].matchScore >= 3)
+                {
+                    lastRound = true;
+                }
                 break;
             }
         }
@@ -52,15 +60,22 @@ public class MatchManager : Singleton<MatchManager>
     {
         yield return new WaitForSeconds(timeToUI);
         // Call UI
-        yield return new WaitForSeconds(timeToRespawn);
-        // Call respawn
+        if (lastRound)
+        {
+            endGameUi.SetActive(true);
+        }
+        else
+        {
+            yield return new WaitForSeconds(timeToRespawn);
+
+        }
 
         StartCoroutine(_StartGame());
     }
 
     public IEnumerator _StartGame()
     {
-        for(int i = 0; i < playerList.Count; i++)
+        for (int i = 0; i < playerList.Count; i++)
         {
             playerList[i].Ressurect();
         }

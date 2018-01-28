@@ -70,9 +70,10 @@ public class Projectile : MonoBehaviour
 			other.PlayerIsBuffed = true;
             other.ChangeAura();
 		}else {
+            AudioManager.Instance.PlaySound("Miss");
             other.ResetStates();
-
-        }
+            
+		}
 
     }
 

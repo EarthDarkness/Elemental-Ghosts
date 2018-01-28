@@ -58,6 +58,7 @@ public class PlayerData : MonoBehaviour
 
     public void Die(PlayerData killer)
     {
+        AudioManager.Instance.PlaySound("Death");
         alive = false;
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
 

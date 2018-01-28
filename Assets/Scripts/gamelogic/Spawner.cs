@@ -34,8 +34,8 @@ public class Spawner : MonoBehaviour {
 		float rx = Random.value*((float)_map._width-0.5f);
 		float ry = Random.value*((float)_map._height-0.5f);
 
-		float re = Random.value*4.5f;
-		if (_map.SpawnElement(Mathf.FloorToInt(rx), Mathf.FloorToInt(ry), (EType)Mathf.FloorToInt(re)))
+        int re = Random.Range(0, 5);
+        if (_map.SpawnElement(Mathf.FloorToInt(rx), Mathf.FloorToInt(ry), (EType)re))
 			++_count;
 
 
