@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
 
     private Rigidbody rb;
+	bool hit = false;
 
     public EType type;
     public float force;
@@ -39,6 +40,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+		if (hit)
+			return;
+		hit = true;
         if (other.CompareTag("Player"))
         {
             ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
