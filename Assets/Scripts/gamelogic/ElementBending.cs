@@ -18,6 +18,8 @@ public class ElementBending : MonoBehaviour
 
     public float timeDeath = 0.2f;
 
+    private PlayerData playerData;
+
     public ElementTable.ElementType ElementType
     {
         set
@@ -44,7 +46,7 @@ public class ElementBending : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        playerData = GetComponent<PlayerData>();
         ElementType = ElementTable.ElementType.Neutral;
 
 
@@ -84,17 +86,5 @@ public class ElementBending : MonoBehaviour
 
     }
 
-
-    public void Die()
-    {
-        StartCoroutine(_WaitToDie());
-    }
-
-
-    IEnumerator _WaitToDie()
-    {
-        yield return new WaitForSeconds(timeDeath);
-        gameObject.SetActive(false);
-    }
 
 }

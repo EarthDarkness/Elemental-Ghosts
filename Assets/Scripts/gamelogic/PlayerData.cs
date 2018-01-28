@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PlayerKilled : ASignal<PlayerData ,PlayerData> { }
 public class PlayerData : MonoBehaviour {
 
     public enum PlayerId
@@ -20,8 +22,23 @@ public class PlayerData : MonoBehaviour {
     public float timeDeath = 0.2f;
     public int score = 0;
 
-    public void Die()
+    public void Start()
     {
+        Signals.Get<PlayerKilled>().AddListener(CheckDeath);
+    }
+
+    private void CheckDeath(PlayerData killer, PlayerData vitimn )
+    {
+        if(killer == this)
+        {
+            score++;
+            //Animation?
+        }
+    }
+
+    public void Die(PlayerData killer)
+    {
+        Signals.Get<PlayerKilled>().Dispatch(killer, this);
         // Animate
         // Particles
         // 

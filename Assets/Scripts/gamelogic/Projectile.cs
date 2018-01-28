@@ -13,10 +13,12 @@ public class Projectile : MonoBehaviour
     public Vector3 direction;
     bool buffed = false;
     public List<ElementModel> listElement;
+    private PlayerData parent;
 
-    
-    public void Initialize(Vector3 direction, ElementTable.ElementType elementType, bool buffed = false, float force = -1)
+    public void Initialize(PlayerData parent, Vector3 direction, ElementTable.ElementType elementType,
+        bool buffed = false, float force = -1)
     {
+        this.parent = parent;
         if (force != -1)
             this.force = force;
         type = elementType;
@@ -65,7 +67,7 @@ public class Projectile : MonoBehaviour
                 other.PlayerIsBuffed = true;
                 break;
             case ElementTable.FightState.Destroy:
-                other.GetComponent<PlayerData>().Die();
+                other.GetComponent<PlayerData>().Die(parent);
                 break;
             case ElementTable.FightState.Nothing:
                 break;

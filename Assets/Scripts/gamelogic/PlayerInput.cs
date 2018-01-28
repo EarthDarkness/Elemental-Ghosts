@@ -16,8 +16,8 @@ public class PlayerInput : MonoBehaviour {
     [Tooltip("Which rate the control will consider as a input"), ShowIf("UsingController")]
     public float controlRate = 0.8f;
 
-    public CharacterMovement movement;
-    public ElementBending elementBending;
+    private CharacterMovement movement;
+    private ElementBending elementBending;
 
 #if UNITY_EDITOR
     private bool UsingController(Object nu)

@@ -226,14 +226,19 @@ public class Board : MonoBehaviour{
 		int gix = GetTileX(bend.transform.position.x);
 		int giy = GetTileX(bend.transform.position.z);
 
-		ElementTable.ElementType ele = (ElementTable.ElementType)_map[gix, giy].GetComponent<TileCell>()._elementType;
-		_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
+        TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
+
+        ElementTable.ElementType ele = (ElementTable.ElementType)tileCell._elementType;
+        tileCell._elementType = 5;//no element
 		bend.ElementType = ele;
 
-        //Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
-        
-        _map[gix, giy].GetComponent<TileCell>()._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
-        _map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
+  
+        if(tileCell._elementVisual)
+        {
+            if(tileCell._elementVisual.GetComponent<ElementAnimation>())
+                tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
+            tileCell._elementVisual = null;
+        }
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);
