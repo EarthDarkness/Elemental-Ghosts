@@ -12,15 +12,17 @@ public class ElementBending : MonoBehaviour
     public bool buffed = false;
     public List<ElementModel> listElement;
 
-    public List<ElementModel> auraList;
+    [InspectorReadOnly]
+    private GameObject[] playerModels = new GameObject[6];
 
-    public static float pickupbasetimer = 0.5f;
-    public float elementalPickup = 0.0f;
+	public static float pickupbasetimer = 0.5f;  
+	public float elementalPickup = 0.0f;  
 
 
     public float timeDeath = 0.2f;
 
     private PlayerData playerData;
+    public Animator animator;
 
     public EType ElementType
     {
@@ -45,24 +47,35 @@ public class ElementBending : MonoBehaviour
     }
 
 
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     // Use this for initialization
     void Start()
     {
         playerData = GetComponent<PlayerData>();
         ElementType = EType.Neutral;
 
+
+        for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
+        {
+            playerModels[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+        }
+
     }
-    void Update() {
-        if (elementalPickup > 0.0f)
-            elementalPickup -= Time.deltaTime;
-    }
+	void Update() {
+		if (elementalPickup > 0.0f)  
+			elementalPickup -= Time.deltaTime;  
+	}  
 
     public void Action()
     {
         if (currentType == EType.Neutral)
         {
             //Signals.Get<PickupElement>().Dispatch(this);
-            elementalPickup = pickupbasetimer;
+			elementalPickup = pickupbasetimer; 
         }
         else
         {
@@ -72,22 +85,19 @@ public class ElementBending : MonoBehaviour
 
     public IEnumerator Shoot()
     {
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
-        ElementType = EType.Neutral;
+        ElementType =EType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
+
     }
 
     public void ChangeModel()
     {
         ElementModel.ChangeModel(listElement, currentType);
 
-    }
-
-    public void ChangeAura()
-    {
-        ElementModel.ChangeModel(auraList, currentType);
     }
 
 

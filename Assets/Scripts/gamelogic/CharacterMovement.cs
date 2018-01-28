@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
         Signals.Get<FreezeGame>().RemoveListener(Freeze);
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdateBuffer();
         CalculateVelocity();
@@ -82,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
         tempVector = rigidbody.velocity;
         tempVector.x = direction.x * velocity;
         tempVector.z = direction.z * velocity;
-        rigidbody.velocity = tempVector * Time.deltaTime;
+        rigidbody.velocity = tempVector * Time.fixedDeltaTime;
     }
 
     public void UpdateBuffer()
