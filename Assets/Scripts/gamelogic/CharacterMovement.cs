@@ -74,7 +74,8 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void ChangeDirection(PlayerInput.Direction newDirection)
+
+    public void ChangeDirection(PlayerInput.Direction newDirection)
     {
         ChangeDirection(newDirection, false);
     }
@@ -130,8 +131,7 @@ public class CharacterMovement : MonoBehaviour
         if (Time.time >= lastTimeCollision)
         {
             lastTimeCollision = Time.time + timeCollisionThreshold;
-            // invert direction
-            tempVector = collision.transform.position;
+
 
             if (Vector3.Dot(direction, collision.contacts[0].normal) < -0.5f)
                 ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));

@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour {
     [Tooltip("Which rate the control will consider as a input"), ShowIf("UsingController")]
     public float controlRate = 0.8f;
 
+    private CharacterMovement movement;
+    private ElementBending elementBending;
+
 #if UNITY_EDITOR
     private bool UsingController(Object nu)
     {
@@ -25,7 +28,10 @@ public class PlayerInput : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        if (movement == null)
+            movement = GetComponent<CharacterMovement>();
+        if (elementBending == null)
+            elementBending = GetComponent<ElementBending>();
 	}
 
     private float tempH, tempV;
@@ -41,27 +47,27 @@ public class PlayerInput : MonoBehaviour {
         {
             tempH = UNInput.GetAxis(playerNumber, AxisCode.LSH);
             tempV = UNInput.GetAxis(playerNumber, AxisCode.LSV);
-            action = UNInput.GetButtonDown(playerNumber, ButtonCode.A) || UNInput.GetButtonDown(ButtonCode.RightBumper);
+            action = UNInput.GetButtonDown(playerNumber, ButtonCode.A) || UNInput.GetButtonDown(playerNumber, ButtonCode.RightBumper);
         }
 
         if (Mathf.Abs(tempH) > controlRate)
         {
             if (tempH > 0)
-                SendMessage("ChangeDirection", Direction.Right);
+                movement.ChangeDirection(Direction.Right);
             else
-                SendMessage("ChangeDirection", Direction.Left);
+                movement.ChangeDirection(Direction.Left);
         }
         else if (Mathf.Abs(tempV) > controlRate)
         {
             if (tempV > 0)
-                SendMessage("ChangeDirection", Direction.Top);
+                movement.ChangeDirection(Direction.Top);
             else
-                SendMessage("ChangeDirection", Direction.Bottom);
+                movement.ChangeDirection(Direction.Bottom);
         }
 
         if(action)
         {
-            SendMessage("Action");
+            elementBending.Action();
         }
     }
 
