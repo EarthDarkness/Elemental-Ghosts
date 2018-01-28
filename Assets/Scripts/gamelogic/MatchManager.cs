@@ -63,14 +63,16 @@ public class MatchManager : Singleton<MatchManager>
         if (lastRound)
         {
             endGameUi.SetActive(true);
+            endGameUi.GetComponentInChildren<TMPro.TextMeshProUGUI>().text =
+                "Player " + ((int)(lastWinnerId + 1)) + " is the winner";
         }
         else
         {
             yield return new WaitForSeconds(timeToRespawn);
 
+            StartCoroutine(_StartGame());
         }
 
-        StartCoroutine(_StartGame());
     }
 
     public IEnumerator _StartGame()

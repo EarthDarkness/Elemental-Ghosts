@@ -9,14 +9,14 @@ public class PlayerData : MonoBehaviour
 
     public enum PlayerId
     {
-        Player_1,
-        Player_2,
-        Player_3,
-        Player_4,
-        Player_5,
-        Player_6,
-        Player_7,
-        Player_8
+        Player1,
+        Player2,
+        Player3,
+        Player4,
+        Player5,
+        Player6,
+        Player7,
+        Player8
     }
 
     public PlayerId playerId;

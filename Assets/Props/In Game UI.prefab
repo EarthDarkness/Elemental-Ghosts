@@ -168,7 +168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1833154606011876
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +692,9 @@ MonoBehaviour:
   timeToRespawn: 3
   countdownUI: {fileID: 114160450202258688}
   playerList: []
+  endGameUi: {fileID: 1691703697665336}
+  matchEndUi: {fileID: 0}
+  lastWinnerId: 0
 --- !u!114 &114871481823309416
 MonoBehaviour:
   m_ObjectHideFlags: 1
