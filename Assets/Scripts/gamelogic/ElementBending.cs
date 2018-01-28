@@ -2,30 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PickupElement : ASignal<ElementBending> { }
 public class ElementBending : MonoBehaviour
 {
-
     public GameObject projectile;
     public float castingTime;
-    [InspectorReadOnly]
     private Coroutine castRoutine;
+    public bool buffed = false;
+    public List<ElementModel> listElement;
+
+    [InspectorReadOnly]
+    private GameObject[] playerModels = new GameObject[6];
 
 	public static float pickupbasetimer = 0.5f;
 	public float elementalPickup = 0.0f;
 
     public ElementTable.ElementType elementType
+
+    public float timeDeath = 0.2f;
+
+    private PlayerData playerData;
+
+    public ElementTable.ElementType ElementType
     {
         set
         {
             currentType = value;
-            SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
+            ChangeModel();
         }
         get { return currentType; }
     }
-    private ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
-    public bool playerIsBuffed
+
+    public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
+
+    public bool PlayerIsBuffed
     {
         set
         {
@@ -34,19 +46,26 @@ public class ElementBending : MonoBehaviour
         get { return buffed; }
     }
 
-    public bool buffed = false;
 
     // Use this for initialization
     void Start()
     {
-        currentType = ElementTable.ElementType.Neutral;
+        playerData = GetComponent<PlayerData>();
+        ElementType = ElementTable.ElementType.Neutral;
+
+
+        for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
+        {
+            playerModels[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+        }
+
     }
 	void Update() {
 		if (elementalPickup > 0.0f)
 			elementalPickup -= Time.deltaTime;
 	}
 
-    private void Action()
+    public void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
@@ -63,9 +82,17 @@ public class ElementBending : MonoBehaviour
     {
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
-        newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
-        currentType = ElementTable.ElementType.Neutral;
+        newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
+        ElementType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
-        SendMessage("ChangePlayerElement", SendMessageOptions.DontRequireReceiver);
+
     }
+
+    public void ChangeModel()
+    {
+        ElementModel.ChangeModel(listElement, currentType);
+
+    }
+
+
 }

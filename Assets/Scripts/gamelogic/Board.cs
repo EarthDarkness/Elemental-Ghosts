@@ -28,7 +28,7 @@ public class Board : MonoBehaviour{
 	void Awake() {
         if(_map == null)
         {
-            Debug.LogWarning("map is null, fetching object");
+
             bool temp = _lock;
             _lock = false;
             Fetch();
@@ -40,7 +40,15 @@ public class Board : MonoBehaviour{
 		Signals.Get<PickupElement>().AddListener(PickElement);
 		Signals.Get<HitWall>().AddListener(DropElement);
 	}
-	void Update() {
+
+    private void OnDestroy()
+    {
+        Signals.Get<PickupElement>().RemoveListener(PickElement);
+        Signals.Get<HitWall>().RemoveListener(DropElement);
+        Signals.Get<CharacterCreated>().RemoveListener(join);
+
+    }
+    void Update() {
 		for(int i=0;i<_players.Count;++i) {
 			if(_players[i].currentDirection == PlayerInput.Direction.Left || _players[i].currentDirection == PlayerInput.Direction.Right) {
 				_players[i].aligned = (GetAlignX(_players[i].transform.position.x)< _thresholdAlign);
@@ -56,7 +64,7 @@ public class Board : MonoBehaviour{
 			
 
 			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
-			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().elementType;
+			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
 
 			if(pel != ElementTable.ElementType.Neutral) {
 				if(ElementTable.weakness[(int)pel] == tel) {
@@ -121,7 +129,9 @@ public class Board : MonoBehaviour{
 				for(int i=0;i<_width;++i) {
 					if(line.transform.childCount > i) {
 						_map[i, j] = line.transform.GetChild(i).gameObject;
-					}else {
+                        _map[i, j].GetComponent<TileCell>().Reset();
+                    }
+                    else {
 						_map[i,j] = new GameObject();
 						_map[i,j].transform.parent = line.transform;
 						_map[i, j].transform.position = new Vector3(minx+_dim[0]*i,0.0f,miny+_dim[1]*j);
@@ -227,19 +237,28 @@ public class Board : MonoBehaviour{
 	}
 
 	void PickElement(ElementBending bend) {
-		if (bend.elementType != ElementTable.ElementType.Neutral)
+		if (bend.ElementType != ElementTable.ElementType.Neutral)
 			return;
 
 		int gix = GetTileX(bend.transform.position.x);
 		int giy = GetTileX(bend.transform.position.z);
 
-		ElementTable.ElementType ele = (ElementTable.ElementType)_map[gix, giy].GetComponent<TileCell>()._elementType;
-		_map[gix, giy].GetComponent<TileCell>()._elementType = 5;//no element
-		bend.elementType = ele;
+        TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
 
 		Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
 		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
 		bend.elementalPickup = 0.0f;
+        ElementTable.ElementType ele = (ElementTable.ElementType)tileCell._elementType;
+        tileCell._elementType = 5;//no element
+		bend.ElementType = ele;
+
+  
+        if(tileCell._elementVisual)
+        {
+            if(tileCell._elementVisual.GetComponent<ElementAnimation>())
+                tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
+            tileCell._elementVisual = null;
+        }
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);

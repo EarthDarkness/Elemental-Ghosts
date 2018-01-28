@@ -10,8 +10,8 @@ public class CharacterMovement : MonoBehaviour
     [Header("Initial Setup"), Tooltip("Only applicable before the start of the game")]
     public PlayerInput.Direction initialDirection = PlayerInput.Direction.Right;
 
-	[Header("Controller Setup"), Tooltip("Velocity of the player")]
-	public static float baseVelocity = 5.0f;
+    [Header("Controller Setup"), Tooltip("Velocity of the player")]
+    public static float baseVelocity = 5.0f;
     public float velocity = baseVelocity;
     [Tooltip("Size of the buffer used for changing direction")]
     public int sizeBufferDirectionChange = 3;
@@ -32,26 +32,50 @@ public class CharacterMovement : MonoBehaviour
 
     [InspectorReadOnly]
     public bool aligned = true;
+    [InspectorReadOnly, SerializeField]
+    private bool freezed = false;
+    private float lastTimeCollision;
+
+    private void Awake()
+    {
+        Signals.Get<FreezeGame>().AddListener(Freeze);
+
+    }
     // Use this for initialization
     void Start()
     {
         bufferDirectionChange = 0;
-        _currentDirection = PlayerInput.Direction.None;
         nextDirection = PlayerInput.Direction.None;
 
         ChangeDirection(initialDirection);
+        _currentDirection = initialDirection;
+
         rigidbody = GetComponent<Rigidbody>();
 
         Signals.Get<CharacterCreated>().Dispatch(this);
 
     }
-
+    private void OnDestroy()
+    {
+        Signals.Get<FreezeGame>().RemoveListener(Freeze);
+    }
     // Update is called once per frame
     void Update()
     {
         UpdateBuffer();
         CalculateVelocity();
     }
+
+    public void Freeze(bool b)
+    {
+        freezed = b;
+        if (freezed)
+            direction = Vector3.zero;
+        else
+            CalculateDirection(_currentDirection);
+    }
+
+
 
     private void CalculateVelocity()
     {
@@ -74,13 +98,14 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void ChangeDirection(PlayerInput.Direction newDirection)
+
+    public void ChangeDirection(PlayerInput.Direction newDirection)
     {
         ChangeDirection(newDirection, false);
     }
     private void ChangeDirection(PlayerInput.Direction newDirection, bool bufferInput)
     {
-        if (newDirection == _currentDirection)
+        if (newDirection == _currentDirection || freezed)
             return;
 
         if (!CheckCanChange())
@@ -93,10 +118,14 @@ public class CharacterMovement : MonoBehaviour
 
             return;
         }
+        CalculateDirection(newDirection);
 
+    }
+
+    private void CalculateDirection(PlayerInput.Direction newDirection)
+    {
         bufferDirectionChange = 0;
         nextDirection = PlayerInput.Direction.None;
-        _currentDirection = newDirection;
         switch (newDirection)
         {
             case PlayerInput.Direction.Top:
@@ -116,7 +145,9 @@ public class CharacterMovement : MonoBehaviour
                 direction.z = 0;
                 break;
         }
+        _currentDirection = newDirection;
         transform.localRotation = Quaternion.LookRotation(direction, Vector3.up);
+
     }
 
     private bool CheckCanChange()
@@ -124,14 +155,13 @@ public class CharacterMovement : MonoBehaviour
         return aligned || ignoreAlign;
     }
 
-    private float lastTimeCollision;
+
+
     public void OnCollisionEnter(Collision collision)
     {
         if (Time.time >= lastTimeCollision)
         {
             lastTimeCollision = Time.time + timeCollisionThreshold;
-            // invert direction
-            tempVector = collision.transform.position;
 
             if (Vector3.Dot(direction, collision.contacts[0].normal) < -0.5f)
                 ChangeDirection((PlayerInput.Direction)((((int)_currentDirection) + 2) % 4));
