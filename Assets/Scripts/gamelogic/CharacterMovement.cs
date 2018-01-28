@@ -11,7 +11,7 @@ public class CharacterMovement : MonoBehaviour
     public PlayerInput.Direction initialDirection = PlayerInput.Direction.Right;
 
     [Header("Controller Setup"), Tooltip("Velocity of the player")]
-    public static float baseVelocity = 5.0f;
+    public static float baseVelocity = 200.0f;
     public float velocity = baseVelocity;
     [Tooltip("Size of the buffer used for changing direction")]
     public int sizeBufferDirectionChange = 3;

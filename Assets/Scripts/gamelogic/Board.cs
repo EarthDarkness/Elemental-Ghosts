@@ -16,7 +16,7 @@ public class Board : MonoBehaviour{
 	public static float _fastSpeed = 2.0f;
 	
 	public static float _boost = 2.0f;
-	public static float _recoveryRate = 4.0f;
+	public static float _recoveryRate = 80.0f;
 
 
 
