@@ -1278,7 +1278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1142812974854264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 6, y: 1, z: 6}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 224125116764903236}
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aafd68c21b9574fae47aff0a595b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useKeyboard: 1
+  useKeyboard: 0
   joystickId: 0
   controlRate: 0.8
 --- !u!114 &114362531464036382
@@ -2024,7 +2024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e440b1922040e4db1fb270bbd4dac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 1
+  initialDirection: 3
   velocity: 5
   sizeBufferDirectionChange: 5
   timeCollisionThreshold: 0.3
@@ -2081,7 +2081,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9f1a578bc98b52746a42b048e4eeb84c, type: 2}
+  - {fileID: 2100000, guid: f6dd739c2b1589a4f91a509bd92ee730, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2163,7 +2163,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9f1a578bc98b52746a42b048e4eeb84c, type: 2}
+  - {fileID: 2100000, guid: ef75f3c11421abb48be8244ee14cb754, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2245,7 +2245,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9f1a578bc98b52746a42b048e4eeb84c, type: 2}
+  - {fileID: 2100000, guid: 1c4240447b5d3724788317b6df93e4a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2409,7 +2409,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9f1a578bc98b52746a42b048e4eeb84c, type: 2}
+  - {fileID: 2100000, guid: cc5c35418aa0baa44b93f8d27a37f944, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2491,7 +2491,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9f1a578bc98b52746a42b048e4eeb84c, type: 2}
+  - {fileID: 2100000, guid: c25b8da1085f0d845a687c7b1e7975a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
