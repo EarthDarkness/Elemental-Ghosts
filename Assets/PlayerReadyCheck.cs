@@ -140,7 +140,11 @@ public class PlayerInfo
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Unjoin();
+                Back();
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Ready();
             }
         }
         else
@@ -148,15 +152,28 @@ public class PlayerInfo
             UNInput.GetInputReference(joystickID, out vi);
             if (!vi.connected)
             {
+                Unready();
                 Unjoin();
                 return;
             }
 
             if (UNInput.GetButtonDown(joystickID, "Back"))
             {
-                Unjoin();
+                Back();
+            }
+
+            if (UNInput.GetButtonDown(joystickID, "Action"))
+            {
+                Ready();
             }
         }
+    }
+
+    public void Unready()
+    {
+        text.text = "Player " + (ID + 1) + " has joined the game";
+        isReady = false;
+        CrystalController.SetTrigger("Unready");
     }
 
     public void Unjoin()
@@ -164,8 +181,24 @@ public class PlayerInfo
         PlayerReadyCheck.instance.Remove(joystickID);
 
         hasClicked = false;
-        //Resetar o rest ????
+        CrystalController.SetTrigger("Unjoin");
+        text.text = "Waiting for a player";
+        CrystalBase.color = Color.grey;
     }
+
+    public void Back()
+    {
+        if (isReady)
+        {
+            Unready();
+        }
+        else
+        {
+            Unjoin();
+        }
+
+    }
+
 
 
 }
