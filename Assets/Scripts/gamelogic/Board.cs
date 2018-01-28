@@ -60,7 +60,7 @@ public class Board : MonoBehaviour{
 			}
 
 			int px = GetTileX(_players[i].transform.position.x);
-			int py = GetTileX(_players[i].transform.position.z);
+			int py = GetTileY(_players[i].transform.position.z);
 
 			EType tel = _map[px, py].GetComponent<TileCell>()._elementType;
 			EType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
@@ -241,11 +241,12 @@ public class Board : MonoBehaviour{
 	}
 
 	void PickElement(ElementBending bend) {
+		//Debug.Log(bend.ElementType);
 		if (bend.ElementType != EType.Neutral)
 			return;
 
 		int gix = GetTileX(bend.transform.position.x);
-		int giy = GetTileX(bend.transform.position.z);
+		int giy = GetTileY(bend.transform.position.z);
 
         TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
 
@@ -267,7 +268,7 @@ public class Board : MonoBehaviour{
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);
-		int giy = GetTileX(shot.transform.position.z);
+		int giy = GetTileY(shot.transform.position.z);
 
 		if (gix < 0)
 			gix = 0;
@@ -304,7 +305,7 @@ public class Board : MonoBehaviour{
 			nx += dx;
 			ny += dy;
 		}
-		Debug.Log(nx + " " + ny);
+		//Debug.Log(nx + " " + ny);
 		TileCell tc = _map[nx, ny].GetComponent<TileCell>();
 
 		EType nElement = shot.type;
