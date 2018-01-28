@@ -8,7 +8,8 @@ public class MatchManager : Singleton<MatchManager> {
     public List<PlayerData> playerList;
 	// Use this for initialization
 	void Start () {
-        Signals.Get<PlayerKilled>().AddListener(CheckWinCondition);
+        Signals.Get<PlayerKilled>().
+            AddListener(CheckWinCondition);
 	}
 
     private void CheckWinCondition(PlayerData arg1, PlayerData arg2)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2071,23 +2071,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - CrystalController: {fileID: 419791408}
+  - inputKey: 0
+    CrystalController: {fileID: 419791408}
     text: {fileID: 1992601066}
     col: {r: 1, g: 0, b: 0, a: 1}
     CrystalBase: {fileID: 1030152318}
-  - CrystalController: {fileID: 1155303076}
+  - inputKey: 0
+    CrystalController: {fileID: 1155303076}
     text: {fileID: 1282469236}
     col: {r: 1, g: 0.93103445, b: 0, a: 1}
     CrystalBase: {fileID: 530382858}
-  - CrystalController: {fileID: 2061778904}
+  - inputKey: 0
+    CrystalController: {fileID: 2061778904}
     text: {fileID: 1612367625}
     col: {r: 0, g: 0.95862055, b: 1, a: 1}
     CrystalBase: {fileID: 986855480}
-  - CrystalController: {fileID: 1623459422}
+  - inputKey: 0
+    CrystalController: {fileID: 1623459422}
     text: {fileID: 71336898}
     col: {r: 0.11724138, g: 1, b: 0, a: 1}
     CrystalBase: {fileID: 1544445924}
   waitingID: 0
+  remainingInputs: 
+  keyboardAvailable: 1
 --- !u!114 &1410505679
 MonoBehaviour:
   m_ObjectHideFlags: 0

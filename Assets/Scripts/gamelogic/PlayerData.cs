@@ -24,6 +24,7 @@ public class PlayerData : MonoBehaviour {
 
     public void Start()
     {
+        
         Signals.Get<PlayerKilled>().AddListener(CheckDeath);
     }
 
