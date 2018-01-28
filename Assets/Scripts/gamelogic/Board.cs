@@ -28,7 +28,7 @@ public class Board : MonoBehaviour{
 	void Awake() {
         if(_map == null)
         {
-            Debug.LogWarning("map is null, fetching object");
+
             bool temp = _lock;
             _lock = false;
             Fetch();

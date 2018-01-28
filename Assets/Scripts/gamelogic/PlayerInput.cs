@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour {
     [Header("Player Setting")]
     public bool useKeyboard;
     [ShowIf("UsingController")]
-    public int playerNumber;
+    public int joystickId;
     [Tooltip("Which rate the control will consider as a input"), ShowIf("UsingController")]
     public float controlRate = 0.8f;
 
@@ -45,9 +45,9 @@ public class PlayerInput : MonoBehaviour {
         }
         else
         {
-            tempH = UNInput.GetAxis(playerNumber, AxisCode.LSH);
-            tempV = UNInput.GetAxis(playerNumber, AxisCode.LSV);
-            action = UNInput.GetButtonDown(playerNumber, ButtonCode.A) || UNInput.GetButtonDown(playerNumber, ButtonCode.RightBumper);
+            tempH = UNInput.GetAxis(joystickId, AxisCode.LSH);
+            tempV = UNInput.GetAxis(joystickId, AxisCode.LSV);
+            action = UNInput.GetButtonDown(joystickId, ButtonCode.A) || UNInput.GetButtonDown(joystickId, ButtonCode.RightBumper);
         }
 
         if (Mathf.Abs(tempH) > controlRate)

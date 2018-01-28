@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerKilled : ASignal<PlayerData ,PlayerData> { }
-public class PlayerData : MonoBehaviour {
+public class PlayerKilled : ASignal<PlayerData, PlayerData> { }
+public class PlayerData : MonoBehaviour
+{
 
     public enum PlayerId
     {
@@ -25,13 +26,21 @@ public class PlayerData : MonoBehaviour {
 
     public void Start()
     {
-        
+        if (PersisterPlayerInputInfo.players != null)
+        {
+            if (!PersisterPlayerInputInfo.players.ContainsKey(playerId))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            GetComponent<PlayerInput>().joystickId = PersisterPlayerInputInfo.players[playerId];
+        }
         Signals.Get<PlayerKilled>().AddListener(CheckDeath);
     }
 
-    private void CheckDeath(PlayerData killer, PlayerData vitimn )
+    private void CheckDeath(PlayerData killer, PlayerData vitimn)
     {
-        if(killer == this)
+        if (killer == this)
         {
             killScore++;
         }

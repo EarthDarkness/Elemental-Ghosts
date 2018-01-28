@@ -2,9 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UniversalNetworkInput;
 
+public static class PersisterPlayerInputInfo
+{
+    public static Dictionary<PlayerData.PlayerId, int> players;
+}
 
 public class PlayerReadyCheck : MonoBehaviour
 {
@@ -19,6 +24,7 @@ public class PlayerReadyCheck : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        PersisterPlayerInputInfo.players = new Dictionary<PlayerData.PlayerId, int>();
         instance = this;
         for (int i = 0; i < players.Length; i++)
         {
@@ -78,7 +84,11 @@ public class PlayerReadyCheck : MonoBehaviour
         }
         if (joinedAndReady >= 2)
         {
-            // DO THE THING THAT LOADS THE GAME
+            SceneManager.LoadScene("Game");
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].Save();
+            }
         }
     }
 
@@ -100,7 +110,7 @@ public class PlayerInfo
     public TMPro.TextMeshProUGUI text;
     public Color col;
     public Image CrystalBase;
-    int ID = -1;
+    PlayerData.PlayerId ID;
     private VirtualInput vi;
 
     public void Joined(int inputKey)
@@ -120,7 +130,7 @@ public class PlayerInfo
     }
     public void SetId(int id)
     {
-        this.ID = id;
+        this.ID = (PlayerData.PlayerId)id;
     }
     public bool GetJoined()
     {
@@ -197,6 +207,14 @@ public class PlayerInfo
             Unjoin();
         }
 
+    }
+
+    public void Save()
+    {
+        if (hasClicked)
+        {
+            PersisterPlayerInputInfo.players.Add(ID, joystickID);
+        }
     }
 
 
