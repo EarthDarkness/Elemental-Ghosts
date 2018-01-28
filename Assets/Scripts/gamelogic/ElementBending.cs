@@ -15,14 +15,21 @@ public class ElementBending : MonoBehaviour
     [InspectorReadOnly]
     private GameObject[] playerModels = new GameObject[6];
 
-	public static float pickupbasetimer = 0.5f;
-	public float elementalPickup = 0.0f;
-
-	public ElementTable.ElementType ElementType;
 
     public float timeDeath = 0.2f;
 
     private PlayerData playerData;
+
+    public ElementTable.ElementType ElementType
+    {
+        set
+        {
+            currentType = value;
+            ChangeModel();
+        }
+        get { return currentType; }
+    }
+
 
     public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
 
@@ -49,18 +56,14 @@ public class ElementBending : MonoBehaviour
         }
 
     }
-	void Update() {
-		if (elementalPickup > 0.0f)
-			elementalPickup -= Time.deltaTime;
-	}
+
 
     public void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
-			//Signals.Get<PickupElement>().Dispatch(this);
-			elementalPickup = pickupbasetimer;
-		}
+            Signals.Get<PickupElement>().Dispatch(this);
+        }
         else
         {
             castRoutine = StartCoroutine(Shoot());

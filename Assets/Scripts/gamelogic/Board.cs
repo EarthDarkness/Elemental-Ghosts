@@ -24,7 +24,7 @@ public class Board : MonoBehaviour{
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
     [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
-    public GameObject[,] _map;
+    GameObject[,] _map;
 	void Awake() {
         if(_map == null)
         {
@@ -58,10 +58,6 @@ public class Board : MonoBehaviour{
 
 			int px = GetTileX(_players[i].transform.position.x);
 			int py = GetTileX(_players[i].transform.position.z);
-
-			if(_players[i].GetComponent<ElementBending>().elementalPickup > 0.0f)
-				PickElement(_players[i].GetComponent<ElementBending>());
-			
 
 			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
 			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
@@ -152,6 +148,7 @@ public class Board : MonoBehaviour{
 				}
 			}
 		}
+
 	}
 
 	[EasyButtons.Button()]
@@ -174,11 +171,7 @@ public class Board : MonoBehaviour{
 				_map[i, j].name = "Col "+i.ToString();
 			}
 		}
-		IconControl icc = this.transform.GetComponent<IconControl>();
-		if(icc != null) {
-			icc._container = this;
-			icc.Deploy(_width, _height, _dim[0], _dim[1]);
-		}
+
 	}
 	[EasyButtons.Button()]
 	void Reset() {
@@ -245,9 +238,6 @@ public class Board : MonoBehaviour{
 
         TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
 
-		Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
-		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
-		bend.elementalPickup = 0.0f;
         ElementTable.ElementType ele = (ElementTable.ElementType)tileCell._elementType;
         tileCell._elementType = 5;//no element
 		bend.ElementType = ele;
@@ -259,8 +249,6 @@ public class Board : MonoBehaviour{
                 tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
             tileCell._elementVisual = null;
         }
-
-		bend.elementalPickup = 0.0f;
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);
