@@ -80,9 +80,16 @@ public class ElementBending : MonoBehaviour
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
-        ElementType =EType.Neutral;
+        ResetStates();
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
 
+    }
+
+    public void ResetStates()
+    {
+        ElementType = EType.Neutral;
+        PlayerIsBuffed = false;
+        DisableAura();
     }
 
     public void ChangeModel()
@@ -93,6 +100,14 @@ public class ElementBending : MonoBehaviour
     public void ChangeAura()
     {
         ElementModel.ChangeModel(auraModel, currentType);
+    }
+
+    public void DisableAura()
+    {
+        for (int i = 0; i < auraModel.Count; i++)
+        {
+            auraModel[i].SetActive(false);
+        }
     }
 
 
