@@ -23,7 +23,7 @@ public class ElementBending : MonoBehaviour
 
     private PlayerData playerData;
 
-    public ElementTable.ElementType ElementType
+    public EType ElementType
     {
         set
         {
@@ -34,7 +34,7 @@ public class ElementBending : MonoBehaviour
     }
 
 
-    public ElementTable.ElementType currentType = ElementTable.ElementType.Neutral;
+    public EType currentType = EType.Neutral;
 
     public bool PlayerIsBuffed
     {
@@ -50,7 +50,7 @@ public class ElementBending : MonoBehaviour
     void Start()
     {
         playerData = GetComponent<PlayerData>();
-        ElementType = ElementTable.ElementType.Neutral;
+        ElementType = EType.Neutral;
 
 
         for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
@@ -66,7 +66,7 @@ public class ElementBending : MonoBehaviour
 
     public void Action()
     {
-        if (currentType == ElementTable.ElementType.Neutral)
+        if (currentType == EType.Neutral)
         {
             //Signals.Get<PickupElement>().Dispatch(this);
 			elementalPickup = pickupbasetimer; 
@@ -82,7 +82,7 @@ public class ElementBending : MonoBehaviour
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
-        ElementType = ElementTable.ElementType.Neutral;
+        ElementType =EType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
 
     }

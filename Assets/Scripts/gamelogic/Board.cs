@@ -62,15 +62,16 @@ public class Board : MonoBehaviour{
 			int px = GetTileX(_players[i].transform.position.x);
 			int py = GetTileX(_players[i].transform.position.z);
 
-			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
-			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
+			EType tel = _map[px, py].GetComponent<TileCell>()._elementType;
+			EType pel = _players[i].transform.GetComponent<ElementBending>().ElementType;
 
-			if(pel != ElementTable.ElementType.Neutral) {
-				if(ElementTable.weakness[(int)pel] == tel) {
+			if(pel != EType.Neutral) {
+				EResult res = ETable._contatct[(int)pel,(int)tel];
+				if(res == EResult.A_Damage) {
 					_players[i].velocity = CharacterMovement.baseVelocity*_slowSpeed;
 					if(_players[i].transform.GetComponent<ElementBending>().buffed)
 						_players[i].velocity *= _boost;
-				}else if(ElementTable.fortification[(int)tel] == pel) {
+				}else if(res == EResult.A_Buff) {
 					_players[i].velocity = CharacterMovement.baseVelocity*_fastSpeed;
 					if(_players[i].transform.GetComponent<ElementBending>().buffed)
 						_players[i].velocity *= _boost;
@@ -94,10 +95,10 @@ public class Board : MonoBehaviour{
 		}
 	}
 
-	public bool SpawnElement(int x, int y, int element) {
+	public bool SpawnElement(int x, int y, EType element) {
 		//Debug.Log(element.ToString());
 		//Debug.Log(_map[x, y].GetComponent<TileCell>()._elementType);
-		if (_map[x, y].GetComponent<TileCell>()._elementType != (int)ElementTable.ElementType.Neutral)
+		if (_map[x, y].GetComponent<TileCell>()._elementType != EType.Neutral)
 			return false;
 		//if (_map[x, y].GetComponent<TileCell>().GetComponentInChildren<Collider>() != null)
 		//	return false;
@@ -106,7 +107,7 @@ public class Board : MonoBehaviour{
 			return false;
 
 		_map[x, y].GetComponent<TileCell>()._elementType = element;
-		_map[x, y].GetComponent<TileCell>()._elementVisual = Instantiate(_tilePrefab[element],_map[x, y].transform);
+		_map[x, y].GetComponent<TileCell>()._elementVisual = Instantiate(_tilePrefab[(int)element],_map[x, y].transform);
 		return true;
 	}
 
@@ -239,7 +240,7 @@ public class Board : MonoBehaviour{
 	}
 
 	void PickElement(ElementBending bend) {
-		if (bend.ElementType != ElementTable.ElementType.Neutral)
+		if (bend.ElementType != EType.Neutral)
 			return;
 
 		int gix = GetTileX(bend.transform.position.x);
@@ -247,8 +248,8 @@ public class Board : MonoBehaviour{
 
         TileCell tileCell = _map[gix, giy].GetComponent<TileCell>();
 
-        ElementTable.ElementType ele = (ElementTable.ElementType)tileCell._elementType;
-        tileCell._elementType = 5;//no element
+        EType ele = tileCell._elementType;
+		tileCell._elementType = EType.Neutral;
 		bend.ElementType = ele;
 
   
@@ -258,7 +259,7 @@ public class Board : MonoBehaviour{
                 tileCell._elementVisual.GetComponent<ElementAnimation>().InstantiateAnimation();
             tileCell._elementVisual = null;
         }
-		if((int)bend.ElementType != 5) 
+		if(bend.ElementType != EType.Neutral) 
 			bend.elementalPickup = 0.0f; 
 	}
 	void DropElement(Projectile shot) {
@@ -303,22 +304,23 @@ public class Board : MonoBehaviour{
 		Debug.Log(nx + " " + ny);
 		TileCell tc = _map[nx, ny].GetComponent<TileCell>();
 
-		int nElement = (int)shot.type;
-		int cElement = tc._elementType;
+		EType nElement = shot.type;
+		EType cElement = tc._elementType;
 		--Spawner._count;
-		if(cElement == 5) {
+		EResult res = ETable._contatct[(int)cElement, (int)nElement];
+		if(cElement == EType.Neutral) {
 			tc._elementType = nElement;
-			tc._elementVisual = Instantiate(_tilePrefab[nElement],tc.transform);
-		}else if ((int)ElementTable.weakness[cElement] == nElement) {
+			tc._elementVisual = Instantiate(_tilePrefab[(int)nElement],tc.transform);
+		}else if (res == EResult.A_Damage) {
 			tc._elementType = nElement;
 			Destroy(tc._elementVisual);
-			tc._elementVisual = Instantiate(_tilePrefab[nElement],tc.transform);
-		} else if ((int)ElementTable.weakness[nElement] == cElement) {
+			tc._elementVisual = Instantiate(_tilePrefab[(int)nElement],tc.transform);
+		} else if (res == EResult.B_Damage) {
 			//stay same
 		} else {
 			Destroy(tc._elementVisual);//no element
 			tc._elementVisual = null;
-			tc._elementType = 5;//no element
+			tc._elementType = EType.Neutral;//no element
 			--Spawner._count;
 		}
 		//tc._elementType = nElement;
