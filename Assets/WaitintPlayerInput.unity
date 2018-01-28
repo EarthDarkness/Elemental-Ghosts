@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d741fd984ddbf114580321d9fe73d795, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4aa65c28e74dfc24cb9771684c3ba7fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1054,7 +1054,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a7196103ace44da47984d9919ce0a301, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7513293da65d50d4b9cd5d3bb1a6b527, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1122,7 +1122,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: eb04ecd9e508f0c479f97b567426eaa9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8fbe39a297bd351488664c58eb8aa106, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1432,7 +1432,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 71df4f6a74c0a114b8dd157058a115b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c80f0fa06bda9342af1b1d8e7bddec0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1867,26 +1867,26 @@ MonoBehaviour:
   - joystickID: 0
     CrystalController: {fileID: 419791408}
     text: {fileID: 1992601066}
-    Grey: {fileID: 21300000, guid: eb04ecd9e508f0c479f97b567426eaa9, type: 3}
-    Normal: {fileID: 21300000, guid: add55bd548719e2468940fe935bd8d83, type: 3}
+    Grey: {fileID: 21300000, guid: 8fbe39a297bd351488664c58eb8aa106, type: 3}
+    Normal: {fileID: 21300000, guid: a87aca6ca4416dc4cbadb76f336680f2, type: 3}
     CrystalBase: {fileID: 1030152318}
   - joystickID: 0
     CrystalController: {fileID: 1155303076}
     text: {fileID: 1282469236}
-    Grey: {fileID: 21300000, guid: d741fd984ddbf114580321d9fe73d795, type: 3}
-    Normal: {fileID: 21300000, guid: 8bb9506695d0f1343b34f13ad94f7bfc, type: 3}
+    Grey: {fileID: 21300000, guid: 4aa65c28e74dfc24cb9771684c3ba7fa, type: 3}
+    Normal: {fileID: 21300000, guid: 1c20e12176f32c844815bad34f8e84f4, type: 3}
     CrystalBase: {fileID: 530382858}
   - joystickID: 0
     CrystalController: {fileID: 2061778904}
     text: {fileID: 1612367625}
-    Grey: {fileID: 21300000, guid: a7196103ace44da47984d9919ce0a301, type: 3}
-    Normal: {fileID: 21300000, guid: 937f4c866caaa0844986e49bbf5656b2, type: 3}
+    Grey: {fileID: 21300000, guid: 7513293da65d50d4b9cd5d3bb1a6b527, type: 3}
+    Normal: {fileID: 21300000, guid: f7f642be607853b4fa6ffc1b3778b195, type: 3}
     CrystalBase: {fileID: 986855480}
   - joystickID: 0
     CrystalController: {fileID: 1831552660}
     text: {fileID: 1189582356}
     Grey: {fileID: 21300000, guid: 71df4f6a74c0a114b8dd157058a115b6, type: 3}
-    Normal: {fileID: 21300000, guid: 53e15b76fa7025040a9e872a01f319fc, type: 3}
+    Normal: {fileID: 21300000, guid: 5c80f0fa06bda9342af1b1d8e7bddec0, type: 3}
     CrystalBase: {fileID: 1197690303}
   waitingID: 0
   remainingInputs: 
