@@ -58,7 +58,7 @@ MonoBehaviour:
   poolMusic: []
   sizePoolMusic: 2
   sounds:
-  - name: Water Impact
+  - name: Water
     clip: {fileID: 8300000, guid: abb5a5b73a0e798458cb11d1488813cf, type: 3}
     mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
     volume: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     lastSource: {fileID: 0}
-  - name: Earth Impact
+  - name: Earth
     clip: {fileID: 8300000, guid: d0537d0de6325c04d97709c6982376c4, type: 3}
     mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
     volume: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     lastSource: {fileID: 0}
-  - name: Metal Impact
+  - name: Metal
     clip: {fileID: 8300000, guid: bd3c4564cc0d1e248bd4d76061faff4d, type: 3}
     mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
     volume: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     lastSource: {fileID: 0}
-  - name: Wood Impact
+  - name: Wood
     clip: {fileID: 8300000, guid: d45c67b5e0aa00d4c8a9e1f9574069c1, type: 3}
     mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
     volume: 1
@@ -102,8 +102,30 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     lastSource: {fileID: 0}
-  - name: Fire Impact
-    clip: {fileID: 8300000, guid: d2e25c4d3fea6a14d8cd4d8fbb9be428, type: 3}
+  - name: Fire
+    clip: {fileID: 8300000, guid: 04201dfc03de2a24e87bb92d41812234, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 0.8
+    maxPitch: 1.3
+    priority: 128
+    reverse: 0
+    loop: 0
+    isMusic: 0
+    lastSource: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 345c4add0a91a7741a39f4fb31608114, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 0.8
+    maxPitch: 1.3
+    priority: 128
+    reverse: 0
+    loop: 0
+    isMusic: 0
+    lastSource: {fileID: 0}
+  - name: Miss
+    clip: {fileID: 8300000, guid: a4d70a86a2407ba4ebb0aa0a19525b1f, type: 3}
     mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
     volume: 1
     minPitch: 0.8
