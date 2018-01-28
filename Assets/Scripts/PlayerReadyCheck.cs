@@ -108,7 +108,7 @@ public class PlayerInfo
     public int joystickID;
     public Animator CrystalController;
     public TMPro.TextMeshProUGUI text;
-    public Color col;
+    public Sprite Grey, Normal;
     public Image CrystalBase;
     PlayerData.PlayerId ID;
     private VirtualInput vi;
@@ -118,7 +118,7 @@ public class PlayerInfo
         this.joystickID = inputKey;
         hasClicked = true;
         text.text = "Player " + (ID + 1) + " has joined the game";
-        CrystalBase.color = col;
+        CrystalBase.sprite = Normal;
         CrystalController.SetTrigger("Joined");
     }
     public void Ready()
@@ -193,7 +193,7 @@ public class PlayerInfo
         hasClicked = false;
         CrystalController.SetTrigger("Unjoin");
         text.text = "Waiting for a player";
-        CrystalBase.color = Color.grey;
+        CrystalBase.sprite = Grey;
     }
 
     public void Back()
