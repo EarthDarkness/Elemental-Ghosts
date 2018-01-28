@@ -95,15 +95,17 @@ public class PlayerInfo
 {
     bool isReady = false;
     bool hasClicked = false;
-    public int inputKey;
+    public int joystickID;
     public Animator CrystalController;
     public TMPro.TextMeshProUGUI text;
     public Color col;
     public Image CrystalBase;
     int ID = -1;
+    private VirtualInput vi;
+
     public void Joined(int inputKey)
     {
-        this.inputKey = inputKey;
+        this.joystickID = inputKey;
         hasClicked = true;
         text.text = "Player " + (ID + 1) + " has joined the game";
         CrystalBase.color = col;
@@ -134,7 +136,7 @@ public class PlayerInfo
         if (!hasClicked)
             return;
 
-        if (inputKey == -1)
+        if (joystickID == -1)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -143,7 +145,14 @@ public class PlayerInfo
         }
         else
         {
-            if (UNInput.GetButtonDown(inputKey, "Back"))
+            UNInput.GetInputReference(joystickID, out vi);
+            if (!vi.connected)
+            {
+                Unjoin();
+                return;
+            }
+
+            if (UNInput.GetButtonDown(joystickID, "Back"))
             {
                 Unjoin();
             }
@@ -152,7 +161,7 @@ public class PlayerInfo
 
     public void Unjoin()
     {
-        PlayerReadyCheck.instance.Remove(inputKey);
+        PlayerReadyCheck.instance.Remove(joystickID);
 
         hasClicked = false;
         //Resetar o rest ????
