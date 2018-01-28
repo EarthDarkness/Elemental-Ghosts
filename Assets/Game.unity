@@ -1081,6 +1081,11 @@ Prefab:
       propertyPath: auraList.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -1211,6 +1216,51 @@ Prefab:
       propertyPath: listElement.Array.data[4].elementType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].elementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].elementType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].elementType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].gameObject
+      value: 
+      objectReference: {fileID: 1041189234}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 1715495710}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 322174629}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 81500565}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].gameObject
+      value: 
+      objectReference: {fileID: 2141741297}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -1647,6 +1697,11 @@ Prefab:
       propertyPath: auraList.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -1777,6 +1832,51 @@ Prefab:
       propertyPath: listElement.Array.data[4].elementType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].elementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].elementType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].elementType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 258881119}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 794156069}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 859452595}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].gameObject
+      value: 
+      objectReference: {fileID: 1838351533}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].gameObject
+      value: 
+      objectReference: {fileID: 1016949799}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -1795,6 +1895,11 @@ Prefab:
     - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
         type: 2}
       propertyPath: auraList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
@@ -1927,6 +2032,51 @@ Prefab:
       propertyPath: listElement.Array.data[4].elementType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].elementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].elementType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].elementType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[3].gameObject
+      value: 
+      objectReference: {fileID: 1937511661}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[0].gameObject
+      value: 
+      objectReference: {fileID: 1306021397}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 803951387}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 248908186}
+    - target: {fileID: 114362531464036382, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: auraModel.Array.data[4].gameObject
+      value: 
+      objectReference: {fileID: 1810617293}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -2287,11 +2437,6 @@ Prefab:
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114295720339211200, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
-        type: 2}
-      propertyPath: useKeyboard
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}

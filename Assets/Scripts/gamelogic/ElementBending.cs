@@ -11,9 +11,7 @@ public class ElementBending : MonoBehaviour
     private Coroutine castRoutine;
     public bool buffed = false;
     public List<ElementModel> listElement;
-
-    [InspectorReadOnly]
-    private GameObject[] playerModels = new GameObject[6];
+    public List<ElementModel> auraModel;
 
 	public static float pickupbasetimer = 0.5f;  
 	public float elementalPickup = 0.0f;  
@@ -57,13 +55,6 @@ public class ElementBending : MonoBehaviour
     {
         playerData = GetComponent<PlayerData>();
         ElementType = EType.Neutral;
-
-
-        for (int i = 0; i < gameObject.transform.GetChild(0).childCount; i++)
-        {
-            playerModels[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
-        }
-
     }
 	void Update() {
 		if (elementalPickup > 0.0f)  
@@ -97,7 +88,11 @@ public class ElementBending : MonoBehaviour
     public void ChangeModel()
     {
         ElementModel.ChangeModel(listElement, currentType);
+    }
 
+    public void ChangeAura()
+    {
+        ElementModel.ChangeModel(auraModel, currentType);
     }
 
 

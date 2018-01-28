@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aafd68c21b9574fae47aff0a595b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useKeyboard: 0
+  useKeyboard: 1
   joystickId: 0
   controlRate: 0.8
 --- !u!114 &114362531464036382
@@ -2006,7 +2006,7 @@ MonoBehaviour:
     elementType: 2
   - gameObject: {fileID: 1355324018091766}
     elementType: 5
-  auraList:
+  auraModel:
   - gameObject: {fileID: 1547894715420982}
     elementType: 0
   - gameObject: {fileID: 1229188283153616}
@@ -2019,6 +2019,7 @@ MonoBehaviour:
     elementType: 4
   elementalPickup: 0
   timeDeath: 0.2
+  animator: {fileID: 0}
   currentType: 5
 --- !u!114 &114398665999930434
 MonoBehaviour:

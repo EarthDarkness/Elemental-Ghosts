@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
 		}else if(result == EResult.B_Buff) {
             Debug.Log("buff");
 			other.PlayerIsBuffed = true;
-            //other.ChangeAura();
+            other.ChangeAura();
 		}else {
             other.ElementType = EType.Neutral;
             
