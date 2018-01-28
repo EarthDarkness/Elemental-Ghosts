@@ -19,6 +19,7 @@ public class TileCell : MonoBehaviour
 
     void OnValidate()
     {
+
         if (_lock)
             return;
         for (int i = transform.childCount; i < _component.Count; ++i)
@@ -64,6 +65,7 @@ public class TileCell : MonoBehaviour
 
         for (int i = 0; i < _component.Count; ++i)
         {
+            Debug.Log(_component[i]);
             if (_component[i] != null)
                 Instantiate(_component[i], transform);
         }

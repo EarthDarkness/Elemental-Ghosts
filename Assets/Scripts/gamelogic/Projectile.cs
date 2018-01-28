@@ -14,7 +14,6 @@ public class Projectile : MonoBehaviour
     bool buffed = false;
     public List<ElementModel> listElement;
     private PlayerData parent;
-
     public void Initialize(PlayerData parent, Vector3 direction, EType elementType,
         bool buffed = false, float force = -1)
     {
@@ -31,7 +30,7 @@ public class Projectile : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        AudioManager.Instance.PlaySound(type.ToString());
         rb = GetComponent<Rigidbody>();
 
         rb.AddForce(direction * force, ForceMode.Impulse);
