@@ -41,7 +41,6 @@ public class PlayerData : MonoBehaviour {
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
         // Animate
         // Particles
-        // 
         StartCoroutine(_WaitToDie());
     }
 

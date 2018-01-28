@@ -74,7 +74,7 @@ public class ElementBending : MonoBehaviour
     {
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
-        newProjectile.GetComponent<Projectile>().Initialize(transform.forward, currentType, this.buffed);
+        newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
         ElementType = ElementTable.ElementType.Neutral;
         Physics.IgnoreCollision(GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
 
