@@ -4,56 +4,6 @@
         <name>UNInput_WIN</name>
     </assembly>
     <members>
-        <member name="T:UniversalNetworkInput.EventSystem.UNInputModule">
-            <summary>
-            WIP - DON'T USE!
-            </summary>
-        </member>
-        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_VerticalAxis">
-            <summary>
-            Name of the vertical axis for movement (if axis events are used).
-            </summary>
-        </member>
-        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_SubmitButton">
-            <summary>
-            Name of the submit button.
-            </summary>
-        </member>
-        <member name="F:UniversalNetworkInput.EventSystem.UNInputModule.m_CancelButton">
-            <summary>
-            Name of the submit button.
-            </summary>
-        </member>
-        <member name="P:UniversalNetworkInput.EventSystem.UNInputModule.horizontalAxis">
-            <summary>
-            Name of the horizontal axis for movement (if axis events are used).
-            </summary>
-        </member>
-        <member name="P:UniversalNetworkInput.EventSystem.UNInputModule.verticalAxis">
-            <summary>
-            Name of the vertical axis for movement (if axis events are used).
-            </summary>
-        </member>
-        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.SendSubmitEventToSelectedObject">
-            <summary>
-            Process submit keys.
-            </summary>
-        </member>
-        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.SendMoveEventToSelectedObject">
-            <summary>
-            Process keyboard events.
-            </summary>
-        </member>
-        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.ProcessMouseEvent(System.Int32)">
-            <summary>
-            Process all mouse events.
-            </summary>
-        </member>
-        <member name="M:UniversalNetworkInput.EventSystem.UNInputModule.ProcessMousePress(UnityEngine.EventSystems.PointerInputModule.MouseButtonEventData)">
-            <summary>
-            Process the current mouse press.
-            </summary>
-        </member>
         <member name="T:UniversalNetworkInput.Hardware.HardwareInput">
             <summary>
             Hardware implementation of Virtual Input
@@ -412,6 +362,56 @@
         <member name="M:UniversalNetworkInput.Network.UNServer.Shutdown">
             <summary>
             Shutdown Network Transport Layer and close connection with all clients
+            </summary>
+        </member>
+        <member name="T:UniversalNetworkInput.EventSystem.StandaloneInputModule">
+            <summary>
+            WIP - DON'T USE!
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.StandaloneInputModule.m_VerticalAxis">
+            <summary>
+            Name of the vertical axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.StandaloneInputModule.m_SubmitButton">
+            <summary>
+            Name of the submit button.
+            </summary>
+        </member>
+        <member name="F:UniversalNetworkInput.EventSystem.StandaloneInputModule.m_CancelButton">
+            <summary>
+            Name of the submit button.
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.EventSystem.StandaloneInputModule.horizontalAxis">
+            <summary>
+            Name of the horizontal axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="P:UniversalNetworkInput.EventSystem.StandaloneInputModule.verticalAxis">
+            <summary>
+            Name of the vertical axis for movement (if axis events are used).
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.StandaloneInputModule.SendSubmitEventToSelectedObject">
+            <summary>
+            Process submit keys.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.StandaloneInputModule.SendMoveEventToSelectedObject">
+            <summary>
+            Process keyboard events.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.StandaloneInputModule.ProcessMouseEvent(System.Int32)">
+            <summary>
+            Process all mouse events.
+            </summary>
+        </member>
+        <member name="M:UniversalNetworkInput.EventSystem.StandaloneInputModule.ProcessMousePress(UnityEngine.EventSystems.PointerInputModule.MouseButtonEventData)">
+            <summary>
+            Process the current mouse press.
             </summary>
         </member>
         <member name="T:UniversalNetworkInput.UNInput">

@@ -24,8 +24,11 @@ public class PlayerData : MonoBehaviour
     public int killScore = 0;
     public int matchScore = 0;
     public bool alive = true;
+    private Animator animator;
+
     public void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         if (PersisterPlayerInputInfo.players != null)
         {
             if (!PersisterPlayerInputInfo.players.ContainsKey(playerId))
@@ -58,6 +61,7 @@ public class PlayerData : MonoBehaviour
         alive = false;
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
         // Animate
+        animator.SetTrigger("Die");
         // Particles
         StartCoroutine(_WaitToDie());
     }

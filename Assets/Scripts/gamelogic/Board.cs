@@ -252,6 +252,8 @@ public class Board : MonoBehaviour{
 		tileCell._elementType = EType.Neutral;
 		bend.ElementType = ele;
 
+        if (ele != EType.Neutral)
+            bend.animator.SetTrigger("Receive");
   
         if(tileCell._elementVisual)
         {
