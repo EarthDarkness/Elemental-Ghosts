@@ -1303,6 +1303,12 @@ Prefab:
       propertyPath: auraModel.Array.data[4].gameObject
       value: 
       objectReference: {fileID: 2141741297}
+    - target: {fileID: 212659738158573786, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c88802c739b1d874fae0da43108bb882,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -1917,6 +1923,12 @@ Prefab:
       propertyPath: auraModel.Array.data[4].gameObject
       value: 
       objectReference: {fileID: 1016949799}
+    - target: {fileID: 212659738158573786, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c20e12176f32c844815bad34f8e84f4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -2117,6 +2129,12 @@ Prefab:
       propertyPath: auraModel.Array.data[4].gameObject
       value: 
       objectReference: {fileID: 1810617293}
+    - target: {fileID: 212659738158573786, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f7f642be607853b4fa6ffc1b3778b195,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
   m_IsPrefabParent: 0
@@ -2518,11 +2536,6 @@ Prefab:
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114295720339211200, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
-        type: 2}
-      propertyPath: useKeyboard
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
