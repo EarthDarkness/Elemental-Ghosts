@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerWoodMaterial
-  m_Shader: {fileID: 4800000, guid: c62d9d6887cb92f45bbb632755cba126, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Name: Water
+  m_Shader: {fileID: 4800000, guid: 0cc158c8cc06b0142ade24930d52cb53, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -18,10 +18,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Albedo:
-        m_Texture: {fileID: 2800000, guid: e42048958337d984a957e13c5ac403bf, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,20 +38,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Foam:
+        m_Texture: {fileID: 2800000, guid: 099dc7e1874ea2343b011dc010982d14, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Mask:
-        m_Texture: {fileID: 2800000, guid: f91f7692498a054439dbe355ec90105e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normals:
-        m_Texture: {fileID: 2800000, guid: 24e31ecbf813d9e49bf7a1e0d4034916, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -66,29 +58,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Specular:
-        m_Texture: {fileID: 2800000, guid: 6618005f6bafebf40b3d09f498401fba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TileableFire:
-        m_Texture: {fileID: 2800000, guid: 544db372a21c569448f05844996a3d00, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _char_woodman_diffuse:
-        m_Texture: {fileID: 2800000, guid: c8bc56859dafc87409be99c845bc88ff, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _char_woodman_mask:
-        m_Texture: {fileID: 2800000, guid: 8a08dfa18aa7c634d8bc8244a44af07a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _char_woodman_metallic:
-        m_Texture: {fileID: 2800000, guid: 2be69b1584d71e048a393fff2ef0a80d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _char_woodman_normals:
-        m_Texture: {fileID: 2800000, guid: a7f8fa31ac86a464abab580237a354c7, type: 3}
-        m_Scale: {x: 1, y: 1}
+    - _WaterNormal:
+        m_Texture: {fileID: 2800000, guid: a4720abe7c539dd4ea0feed88ec6942c, type: 3}
+        m_Scale: {x: 20, y: 20}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
@@ -98,24 +70,32 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Distortion: 0.2
     - _DstBlend: 0
-    - _FireIntensity: 0.6
-    - _Float0: 0
+    - _FoamDepth: 0.94
+    - _FoamFalloff: -60
+    - _FoamSmoothness: 0.2
+    - _FoamSpecular: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalScale: 0.3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Smoothness: 0.69
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaterDepth: 0.68
+    - _WaterFalloff: -4.22
+    - _WaterSmoothness: 0.84
+    - _WaterSpecular: 0.31
     - _ZWrite: 1
-    - __dirty: 0
+    - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DeepColor: {r: 0.3634635, g: 0.73148334, b: 0.8103448, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TileSpeed: {r: 0.26, g: -0.1, b: 0.18, a: 0}
+    - _ShalowColor: {r: 1, g: 1, b: 1, a: 0}

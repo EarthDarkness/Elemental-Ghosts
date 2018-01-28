@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4892907794633266}
   - component: {fileID: 137104649233723038}
-  - component: {fileID: 114563082733227882}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -112,7 +111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4682793581139192}
   - component: {fileID: 137604920900811928}
-  - component: {fileID: 114767295784141568}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -303,7 +301,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4016905616097058}
   - component: {fileID: 137238307006276958}
-  - component: {fileID: 114271753245010246}
   m_Layer: 0
   m_Name: Neutral
   m_TagString: Untagged
@@ -335,7 +332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4971220573411834}
   - component: {fileID: 137230085020283974}
-  - component: {fileID: 114010742991748406}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -352,7 +348,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4924347860023178}
   - component: {fileID: 137089330372347460}
-  - component: {fileID: 114266815604141096}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -549,7 +544,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4091921754266898}
   - component: {fileID: 137798398943947210}
-  - component: {fileID: 114961947751155488}
   m_Layer: 0
   m_Name: Metal
   m_TagString: Untagged
@@ -1787,39 +1781,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114010742991748406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1395221014277798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114266815604141096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1424014676571570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114271753245010246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355324018091766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114295720339211200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1861,6 +1822,7 @@ MonoBehaviour:
     elementType: 4
   - gameObject: {fileID: 1355324018091766}
     elementType: 5
+  elementalPickup: 0
   timeDeath: 0.2
   currentType: 5
 --- !u!114 &114398665999930434
@@ -1877,7 +1839,8 @@ MonoBehaviour:
   playerId: 0
   timeDeath: 0.2
   killScore: 0
-  roundScore: 0
+  matchScore: 0
+  alive: 1
 --- !u!114 &114499284620926502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2002,17 +1965,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
---- !u!114 &114563082733227882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013613087629290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114732345357183532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2032,28 +1984,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   _currentDirection: 0
   aligned: 1
---- !u!114 &114767295784141568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1123753942034302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114961947751155488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1606089049276380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  freezed: 0
 --- !u!136 &136863623901852878
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -82,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
         tempVector = rigidbody.velocity;
         tempVector.x = direction.x * velocity;
         tempVector.z = direction.z * velocity;
-        rigidbody.velocity = tempVector;
+        rigidbody.velocity = tempVector * Time.deltaTime;
     }
 
     public void UpdateBuffer()
