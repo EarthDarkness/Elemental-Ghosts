@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WaitintPlayerInput.unity
     guid: efc0d2282bfbf294bb39151074ba9487
+  - enabled: 1
+    path: Assets/Game.unity
+    guid: fb0478193edb2b643a693e87642608f8

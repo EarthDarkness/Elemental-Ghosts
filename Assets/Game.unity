@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8605,7 +8605,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 590652569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df5768cd9c75dda49b48bb6d3544bee2, type: 3}
   m_Name: 
@@ -8831,7 +8831,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605738317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.5, y: -0.6900001, z: -25}
+  m_LocalPosition: {x: -31.5, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20641,7 +20641,11 @@ Prefab:
     - target: {fileID: 114295720339211200, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
         type: 2}
       propertyPath: useKeyboard
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142812974854264, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
@@ -23359,13 +23363,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1711594645}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2a1eb28dc5b727498ddda14690a45c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trackList: []
-  cameraMinimumDistance: 5
+  cameraMinimumDistance: 10
   cameraMargin: 0.3
   cameraInclination: 45
   cameraDirection: 0

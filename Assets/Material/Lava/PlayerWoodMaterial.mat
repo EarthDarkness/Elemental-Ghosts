@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TileableFire:
-        m_Texture: {fileID: 2800000, guid: 6cd5fe02950fa73478f5f2540fc8683a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 544db372a21c569448f05844996a3d00, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _char_woodman_diffuse:
