@@ -8,7 +8,7 @@ public class TileCell : MonoBehaviour
     public bool _lock = false;
     public List<GameObject> _component = new List<GameObject>();
     public GameObject _elementVisual = null;
-    public int _elementType = 5;//5 = no element (TODO element type enum)
+    public EType _elementType = EType.Neutral;
 
 
     /*void Awake() {

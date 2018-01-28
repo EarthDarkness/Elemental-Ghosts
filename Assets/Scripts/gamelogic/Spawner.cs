@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
 			float ry = Random.value*((float)_map._height-0.5f);
 
 			float re = Random.value*4.5f;
-			if (_map.SpawnElement(Mathf.FloorToInt(rx), Mathf.FloorToInt(ry), Mathf.FloorToInt(re)))
+			if (_map.SpawnElement(Mathf.FloorToInt(rx), Mathf.FloorToInt(ry), (EType)Mathf.FloorToInt(re)))
 				++_count;
 
 			_cooldown = _baseDelay;
