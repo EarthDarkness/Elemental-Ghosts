@@ -24,7 +24,7 @@ public class Board : MonoBehaviour{
 	float[] _dim = new float[2]{ 1.0f,1.0f};
 
     [InspectorReadOnly, SerializeField] // if not serialized this won't be kept
-    GameObject[,] _map;
+    public GameObject[,] _map;
 	void Awake() {
         if(_map == null)
         {
@@ -138,7 +138,6 @@ public class Board : MonoBehaviour{
 				}
 			}
 		}
-        Debug.Log(_map);
 	}
 
 	[EasyButtons.Button()]
@@ -161,7 +160,11 @@ public class Board : MonoBehaviour{
 				_map[i, j].name = "Col "+i.ToString();
 			}
 		}
-
+		IconControl icc = this.transform.GetComponent<IconControl>();
+		if(icc != null) {
+			icc._container = this;
+			icc.Deploy(_width, _height, _dim[0], _dim[1]);
+		}
 	}
 	[EasyButtons.Button()]
 	void Reset() {
