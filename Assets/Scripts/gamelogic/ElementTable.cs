@@ -2,40 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EType {
-	Fire = 0,
+public enum EType
+{
+    Fire = 0,
     Metal,
     Wood,
     Earth,
     Water,
     Neutral
 }
-public enum EResult {
-	Nothing=0,
-	A_Buff,
-	A_Damage,	//a take damage
-	B_Buff,
-	B_Damage	//b take damage
+public enum EResult
+{
+    Nothing = 0,
+    A_Buff,
+    A_Damage,   //a take damage
+    B_Buff,
+    B_Damage	//b take damage
 
 }
 
-public class ETable {
-						//[A-Row,B-Col]
-	public static EResult[,] _contatct = {
-		{	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.B_Damage	},
-		{	EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.B_Damage	},
-		{	EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Damage	},
-		{	EResult.B_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage,	EResult.B_Damage	},
-		{	EResult.B_Damage,	EResult.A_Buff,		EResult.B_Buff,		EResult.A_Damage,	EResult.Nothing,	EResult.B_Damage	},
-		{	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.A_Damage,	EResult.Nothing		}
-	};
+public class ETable
+{
+    //[A-Row,B-Col]
+    public static EResult[,] _contatct = {
+        {   EResult.Nothing,    EResult.B_Damage,   EResult.A_Buff,     EResult.B_Buff,     EResult.A_Damage,   EResult.B_Damage    },
+        {   EResult.A_Damage,   EResult.Nothing,    EResult.B_Damage,   EResult.A_Buff,     EResult.B_Buff,     EResult.B_Damage    },
+        {   EResult.B_Buff,     EResult.A_Damage,   EResult.Nothing,    EResult.B_Damage,   EResult.A_Buff,     EResult.B_Damage    },
+        {   EResult.B_Buff,     EResult.B_Buff,     EResult.A_Damage,   EResult.Nothing,    EResult.B_Damage,   EResult.B_Damage    },
+        {   EResult.B_Damage,   EResult.A_Buff,     EResult.B_Buff,     EResult.A_Damage,   EResult.Nothing,    EResult.B_Damage    },
+        {   EResult.A_Damage,   EResult.A_Damage,   EResult.A_Damage,   EResult.A_Damage,   EResult.A_Damage,   EResult.Nothing     }
+    };
 
-	public static EResult[] _inverse = {
-		EResult.Nothing, EResult.B_Buff, EResult.A_Damage, EResult.A_Buff, EResult.A_Damage
-	};
-	public static EResult[] _upgradeA = {
-		EResult.B_Damage, EResult.Nothing, EResult.Nothing, EResult.B_Buff, EResult.B_Damage
-	};
+    public static EResult[] _inverse = {
+        EResult.Nothing, EResult.B_Buff, EResult.A_Damage, EResult.A_Buff, EResult.A_Damage
+    };
+    public static EResult[] _upgradeA = {
+        EResult.B_Damage, EResult.Nothing, EResult.Nothing, EResult.B_Buff, EResult.B_Damage
+    };
 };
 /*
 public static class ElementTable
@@ -86,20 +89,30 @@ public static class ElementTable
                 ElementType.Neutral
     };
 	*/
-    /// <summary>
-    /// Function that returns the interaction between projectile and player elements.
-    /// </summary>
-    /// <param name="attackerElement">The attacker player element.</param>
-    /// <param name="otherElement">The other player element.</param>
-    /// <param name="attackerBuffed">Is attacker player buffed</param>
-    /// <param name="otherBuffed">Is other player buffed</param>
-public class Conflic {
+/// <summary>
+/// Function that returns the interaction between projectile and player elements.
+/// </summary>
+/// <param name="attackerElement">The attacker player element.</param>
+/// <param name="otherElement">The other player element.</param>
+/// <param name="attackerBuffed">Is attacker player buffed</param>
+/// <param name="otherBuffed">Is other player buffed</param>
+public class Conflic
+{
     public static EResult GetProjectileResult(EType attackerElement, EType otherElement, bool attackerBuffed = false, bool otherBuffed = false)
     {
-		EResult res = ETable._contatct[(int)attackerElement,(int)otherElement];
-		if (res == EResult.A_Buff || res == EResult.A_Damage)
-			res = EResult.Nothing;
-		return res;
+        EResult res = ETable._contatct[(int)attackerElement, (int)otherElement];
+        if (otherBuffed)
+        {
+            res = ETable._inverse[(int)res];
+            res = ETable._upgradeA[(int)res];
+        }
+        else if (attackerBuffed)
+        {
+            res = ETable._upgradeA[(int)res];
+        }
+        if (res == EResult.A_Buff || res == EResult.A_Damage)
+            res = EResult.Nothing;
+        return res;
     }
 
     /// <summary>

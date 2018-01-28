@@ -61,8 +61,6 @@ public class PlayerData : MonoBehaviour
         alive = false;
         Signals.Get<PlayerKilled>().Dispatch(killer, this);
 
-        
-
         // Animate
         animator.SetTrigger("Die");
         // Particles

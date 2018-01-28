@@ -13,8 +13,8 @@ public class ElementBending : MonoBehaviour
     public List<ElementModel> listElement;
     public List<ElementModel> auraModel;
 
-	public static float pickupbasetimer = 0.5f;  
-	public float elementalPickup = 0.0f;  
+    public static float pickupbasetimer = 0.5f;
+    public float elementalPickup = 0.0f;
 
 
     public float timeDeath = 0.2f;
@@ -56,17 +56,18 @@ public class ElementBending : MonoBehaviour
         playerData = GetComponent<PlayerData>();
         ElementType = EType.Neutral;
     }
-	void Update() {
-		if (elementalPickup > 0.0f)  
-			elementalPickup -= Time.deltaTime;  
-	}  
+    void Update()
+    {
+        if (elementalPickup > 0.0f)
+            elementalPickup -= Time.deltaTime;
+    }
 
     public void Action()
     {
         if (currentType == EType.Neutral)
         {
             //Signals.Get<PickupElement>().Dispatch(this);
-			elementalPickup = pickupbasetimer; 
+            elementalPickup = pickupbasetimer;
         }
         else
         {
@@ -88,7 +89,6 @@ public class ElementBending : MonoBehaviour
     public void ResetStates()
     {
         ElementType = EType.Neutral;
-        PlayerIsBuffed = false;
         DisableAura();
     }
 
@@ -108,6 +108,7 @@ public class ElementBending : MonoBehaviour
         {
             auraModel[i].SetActive(false);
         }
+        PlayerIsBuffed = false;
     }
 
 

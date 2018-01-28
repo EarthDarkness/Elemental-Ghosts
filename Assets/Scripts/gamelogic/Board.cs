@@ -362,7 +362,7 @@ public class Board : MonoBehaviour
             nx += dx;
             ny += dy;
         }
-        Debug.Log(nx + " " + ny);
+        //Debug.Log(nx + " " + ny);
         TileCell tc = _map[nx, ny].GetComponent<TileCell>();
 
         EType nElement = shot.type;
