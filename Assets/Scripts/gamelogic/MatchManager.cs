@@ -13,6 +13,7 @@ public class MatchManager : Singleton<MatchManager>
     // Use this for initialization
     void Start()
     {
+        AudioManager.Instance.PlaySound("Game", 1);
         Signals.Get<PlayerKilled>().AddListener(CheckWinCondition);
         StartCoroutine(_StartGame());
     }

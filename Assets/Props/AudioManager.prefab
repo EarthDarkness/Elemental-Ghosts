@@ -135,4 +135,48 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     lastSource: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 4b1a2a2e8a6c2e04eb2aa28c1770493a, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    priority: 256
+    reverse: 0
+    loop: 1
+    isMusic: 1
+    lastSource: {fileID: 0}
+  - name: Game
+    clip: {fileID: 8300000, guid: 999cd1ee3dc3ea644b824f3ccf0a1c8f, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    priority: 128
+    reverse: 0
+    loop: 1
+    isMusic: 1
+    lastSource: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: fb0c2dcbfb3453c4d8548df5e98ee84b, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    priority: 128
+    reverse: 0
+    loop: 1
+    isMusic: 1
+    lastSource: {fileID: 0}
+  - name: Win2
+    clip: {fileID: 8300000, guid: 7026f23d559a25247a1d59b4363ddb23, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    priority: 128
+    reverse: 0
+    loop: 1
+    isMusic: 1
+    lastSource: {fileID: 0}
   mixer: {fileID: 24100000, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
