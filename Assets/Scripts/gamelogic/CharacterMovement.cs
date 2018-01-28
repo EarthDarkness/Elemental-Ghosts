@@ -74,6 +74,14 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
+    public void ChangeDirection(Vector3 newDirection)
+    {
+        newDirection.Normalize();
+        _currentDirection = PlayerInput.Direction.None;
+        direction = newDirection;
+        transform.localRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+    }
     public void ChangeDirection(PlayerInput.Direction newDirection)
     {
         ChangeDirection(newDirection, false);

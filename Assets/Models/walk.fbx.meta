@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: df9ef09135060a2418db53803112a584
+timeCreated: 1517104037
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Arm_Back_L
+    100002: Arm_Back_R
+    100004: Arm_L
+    100006: Arm_R
+    100008: Armature
+    100010: back
+    100012: Hand_L
+    100014: Hand_R
+    100016: Head
+    100018: Head_end
+    100020: Hips_Base
+    100022: Hips_Base_end
+    100024: Hips_High
+    100026: Index_Base_L
+    100028: Index_Base_R
+    100030: Index_L
+    100032: Index_R
+    100034: Index_Tip_L
+    100036: Index_Tip_L_end
+    100038: Index_Tip_R
+    100040: Index_Tip_R_end
+    100042: Little_Base_L
+    100044: Little_Base_R
+    100046: Little_L
+    100048: Little_R
+    100050: Little_Tip_L
+    100052: Little_Tip_L_end
+    100054: Little_Tip_R
+    100056: Little_Tip_R_end
+    100058: Middle_Base_L
+    100060: Middle_Base_R
+    100062: Middle_L
+    100064: Middle_R
+    100066: Middle_Tip_L
+    100068: Middle_Tip_L_end
+    100070: Middle_Tip_R
+    100072: Middle_Tip_R_end
+    100074: Shoulder_L
+    100076: Shoulder_R
+    100078: side1
+    100080: Spine_Back
+    100082: Spine_Base
+    100084: Spine_Lower
+    100086: Thumb_Base_L
+    100088: Thumb_Base_R
+    100090: Thumb_L
+    100092: Thumb_L_end
+    100094: Thumb_R
+    100096: Thumb_R_end
+    100098: transform1
+    100100: //RootNode
+    100102: Water Element.000
+    400000: Arm_Back_L
+    400002: Arm_Back_R
+    400004: Arm_L
+    400006: Arm_R
+    400008: Armature
+    400010: back
+    400012: Hand_L
+    400014: Hand_R
+    400016: Head
+    400018: Head_end
+    400020: Hips_Base
+    400022: Hips_Base_end
+    400024: Hips_High
+    400026: Index_Base_L
+    400028: Index_Base_R
+    400030: Index_L
+    400032: Index_R
+    400034: Index_Tip_L
+    400036: Index_Tip_L_end
+    400038: Index_Tip_R
+    400040: Index_Tip_R_end
+    400042: Little_Base_L
+    400044: Little_Base_R
+    400046: Little_L
+    400048: Little_R
+    400050: Little_Tip_L
+    400052: Little_Tip_L_end
+    400054: Little_Tip_R
+    400056: Little_Tip_R_end
+    400058: Middle_Base_L
+    400060: Middle_Base_R
+    400062: Middle_L
+    400064: Middle_R
+    400066: Middle_Tip_L
+    400068: Middle_Tip_L_end
+    400070: Middle_Tip_R
+    400072: Middle_Tip_R_end
+    400074: Shoulder_L
+    400076: Shoulder_R
+    400078: side1
+    400080: Spine_Back
+    400082: Spine_Base
+    400084: Spine_Lower
+    400086: Thumb_Base_L
+    400088: Thumb_Base_R
+    400090: Thumb_L
+    400092: Thumb_L_end
+    400094: Thumb_R
+    400096: Thumb_R_end
+    400098: transform1
+    400100: //RootNode
+    400102: Water Element.000
+    2000000: back
+    2000002: side1
+    2100000: Material
+    4300000: Water Element.000
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Water Element.000
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
