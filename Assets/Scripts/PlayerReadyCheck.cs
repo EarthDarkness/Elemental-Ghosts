@@ -117,14 +117,14 @@ public class PlayerInfo
     {
         this.joystickID = inputKey;
         hasClicked = true;
-        text.text = "Player " + (ID + 1) + " has joined the game";
+        text.text = "Player " + ((int)ID + 1) + " has joined the game";
         CrystalBase.sprite = Normal;
         CrystalController.SetTrigger("Joined");
     }
     public void Ready()
     {
         isReady = true;
-        text.text = "Player " + (ID + 1) + " is ready";
+        text.text = "Player " + ((int)ID + 1) + " is ready";
         CrystalController.SetTrigger("Ready");
         PlayerReadyCheck.instance.ReadyCheck();
     }
@@ -181,7 +181,7 @@ public class PlayerInfo
 
     public void Unready()
     {
-        text.text = "Player " + (ID + 1) + " has joined the game";
+        text.text = "Player " + ((int)ID + 1) + " has joined the game";
         isReady = false;
         CrystalController.SetTrigger("Unready");
     }

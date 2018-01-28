@@ -179,4 +179,15 @@ MonoBehaviour:
     loop: 1
     isMusic: 1
     lastSource: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: c1eb5d37a30739a41b956acec98d0b9a, type: 3}
+    mixer: {fileID: 243477360746211458, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
+    volume: 1
+    minPitch: 0.8
+    maxPitch: 1.2
+    priority: 128
+    reverse: 0
+    loop: 0
+    isMusic: 0
+    lastSource: {fileID: 0}
   mixer: {fileID: 24100000, guid: c53006c18b4cb944797ca49f250cdcf8, type: 2}
