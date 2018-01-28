@@ -15,6 +15,9 @@ public class ElementBending : MonoBehaviour
     [InspectorReadOnly]
     private GameObject[] playerModels = new GameObject[6];
 
+	public static float pickupbasetimer = 0.5f;  
+	public float elementalPickup = 0.0f;  
+
 
     public float timeDeath = 0.2f;
 
@@ -56,13 +59,17 @@ public class ElementBending : MonoBehaviour
         }
 
     }
-
+	void Update() {  
+		if (elementalPickup > 0.0f)  
+			elementalPickup -= Time.deltaTime;  
+	}  
 
     public void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
-            Signals.Get<PickupElement>().Dispatch(this);
+            //Signals.Get<PickupElement>().Dispatch(this);
+			elementalPickup = pickupbasetimer; 
         }
         else
         {
