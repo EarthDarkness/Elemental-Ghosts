@@ -28,7 +28,7 @@ public class Board : MonoBehaviour{
 	void Awake() {
         if(_map == null)
         {
-            Debug.LogWarning("map is null, fetching object");
+
             bool temp = _lock;
             _lock = false;
             Fetch();
@@ -117,7 +117,9 @@ public class Board : MonoBehaviour{
 				for(int i=0;i<_width;++i) {
 					if(line.transform.childCount > i) {
 						_map[i, j] = line.transform.GetChild(i).gameObject;
-					}else {
+                        _map[i, j].GetComponent<TileCell>().Reset();
+                    }
+                    else {
 						_map[i,j] = new GameObject();
 						_map[i,j].transform.parent = line.transform;
 						_map[i, j].transform.position = new Vector3(minx+_dim[0]*i,0.0f,miny+_dim[1]*j);
@@ -138,7 +140,7 @@ public class Board : MonoBehaviour{
 				}
 			}
 		}
-        Debug.Log(_map);
+
 	}
 
 	[EasyButtons.Button()]
