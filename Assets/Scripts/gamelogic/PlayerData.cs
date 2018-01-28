@@ -20,7 +20,8 @@ public class PlayerData : MonoBehaviour {
 
     public PlayerId playerId;
     public float timeDeath = 0.2f;
-    public int score = 0;
+    public int killScore = 0;
+    public int roundScore = 0;
 
     public void Start()
     {
@@ -32,8 +33,7 @@ public class PlayerData : MonoBehaviour {
     {
         if(killer == this)
         {
-            score++;
-            //Animation?
+            killScore++;
         }
     }
 
