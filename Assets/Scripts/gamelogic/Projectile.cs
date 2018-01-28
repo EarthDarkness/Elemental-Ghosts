@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
-            Debug.Log(type + " x " + otherPlayerElement.ElementType);
+            //Debug.Log(type + " x " + otherPlayerElement.ElementType);
             ResolveInteraction(otherPlayerElement, Conflic.GetProjectileResult(type, otherPlayerElement.ElementType, buffed, otherPlayerElement.PlayerIsBuffed));
             Spawner._count -= 1;
 
@@ -62,15 +62,16 @@ public class Projectile : MonoBehaviour
     void ResolveInteraction(ElementBending other, EResult result)
     {
 		if(result == EResult.B_Damage) {
+            other.GetComponent<PlayerData>().Die(parent);            
             other.ResetStates();
-            other.GetComponent<PlayerData>().Die(parent);
-		}else if(result == EResult.B_Buff) {
-            Debug.Log("buff");
+        }
+        else if(result == EResult.B_Buff) {
+            //Debug.Log("buff");
 			other.PlayerIsBuffed = true;
             other.ChangeAura();
 		}else {
             AudioManager.Instance.PlaySound("Miss");
-            other.ElementType = EType.Neutral;
+            other.ResetStates();
             
 		}
 
