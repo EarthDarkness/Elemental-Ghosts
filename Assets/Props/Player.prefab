@@ -1877,7 +1877,8 @@ MonoBehaviour:
   playerId: 0
   timeDeath: 0.2
   killScore: 0
-  roundScore: 0
+  matchScore: 0
+  alive: 1
 --- !u!114 &114499284620926502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   _currentDirection: 0
   aligned: 1
+  freezed: 0
 --- !u!114 &114767295784141568
 MonoBehaviour:
   m_ObjectHideFlags: 1
