@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: WaterEffect
+  m_Name: MetalEffect
   m_Shader: {fileID: 4800000, guid: d38a5bb21e8ced64ca6213a02aeca4b6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
