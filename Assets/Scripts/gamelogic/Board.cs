@@ -51,6 +51,10 @@ public class Board : MonoBehaviour{
 			int px = GetTileX(_players[i].transform.position.x);
 			int py = GetTileX(_players[i].transform.position.z);
 
+			if(_players[i].GetComponent<ElementBending>().elementalPickup > 0.0f)
+				PickElement(_players[i].GetComponent<ElementBending>());
+			
+
 			ElementTable.ElementType tel = (ElementTable.ElementType)_map[px, py].GetComponent<TileCell>()._elementType;
 			ElementTable.ElementType pel = _players[i].transform.GetComponent<ElementBending>().elementType;
 
@@ -235,6 +239,7 @@ public class Board : MonoBehaviour{
 
 		Destroy(_map[gix, giy].GetComponent<TileCell>()._elementVisual);
 		_map[gix, giy].GetComponent<TileCell>()._elementVisual = null;
+		bend.elementalPickup = 0.0f;
 	}
 	void DropElement(Projectile shot) {
 		int gix = GetTileX(shot.transform.position.x);

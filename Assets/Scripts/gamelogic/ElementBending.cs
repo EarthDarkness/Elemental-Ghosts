@@ -11,6 +11,9 @@ public class ElementBending : MonoBehaviour
     [InspectorReadOnly]
     private Coroutine castRoutine;
 
+	public static float pickupbasetimer = 0.5f;
+	public float elementalPickup = 0.0f;
+
     public ElementTable.ElementType elementType
     {
         set
@@ -38,14 +41,18 @@ public class ElementBending : MonoBehaviour
     {
         currentType = ElementTable.ElementType.Neutral;
     }
-
+	void Update() {
+		if (elementalPickup > 0.0f)
+			elementalPickup -= Time.deltaTime;
+	}
 
     private void Action()
     {
         if (currentType == ElementTable.ElementType.Neutral)
         {
-            Signals.Get<PickupElement>().Dispatch(this);
-        }
+			//Signals.Get<PickupElement>().Dispatch(this);
+			elementalPickup = pickupbasetimer;
+		}
         else
         {
             castRoutine = StartCoroutine(Shoot());
