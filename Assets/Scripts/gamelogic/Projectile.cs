@@ -60,9 +60,12 @@ public class Projectile : MonoBehaviour
 		if(result == EResult.B_Damage) {
 			other.GetComponent<PlayerData>().Die(parent);
 		}else if(result == EResult.B_Buff) {
+            Debug.Log("buff");
 			other.PlayerIsBuffed = true;
+            //other.ChangeAura();
 		}else {
-
+            other.ElementType = EType.Neutral;
+            
 		}
 
     }

@@ -22,6 +22,7 @@ public class ElementBending : MonoBehaviour
     public float timeDeath = 0.2f;
 
     private PlayerData playerData;
+    public Animator animator;
 
     public EType ElementType
     {
@@ -46,6 +47,11 @@ public class ElementBending : MonoBehaviour
     }
 
 
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -59,7 +65,7 @@ public class ElementBending : MonoBehaviour
         }
 
     }
-	void Update() {  
+	void Update() {
 		if (elementalPickup > 0.0f)  
 			elementalPickup -= Time.deltaTime;  
 	}  
@@ -79,6 +85,7 @@ public class ElementBending : MonoBehaviour
 
     public IEnumerator Shoot()
     {
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(castingTime);
         GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.LookRotation(transform.forward, transform.up));
         newProjectile.GetComponent<Projectile>().Initialize(playerData, transform.forward, currentType, this.buffed);
