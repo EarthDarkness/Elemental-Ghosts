@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
     {
 		if (hit)
 			return;
-		hit = true;
+		
         if (other.CompareTag("Player"))
         {
             ElementBending otherPlayerElement = other.GetComponent<ElementBending>();
@@ -55,13 +55,15 @@ public class Projectile : MonoBehaviour
         else
         {
             Signals.Get<HitWall>().Dispatch(this);
+            hit = true;
         }
     }
 
     void ResolveInteraction(ElementBending other, EResult result)
     {
 		if(result == EResult.B_Damage) {
-			other.GetComponent<PlayerData>().Die(parent);
+            other.ResetStates();
+            other.GetComponent<PlayerData>().Die(parent);
 		}else if(result == EResult.B_Buff) {
             Debug.Log("buff");
 			other.PlayerIsBuffed = true;
