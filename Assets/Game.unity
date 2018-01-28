@@ -1017,7 +1017,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 07fd7657f91ba7c4881637fb236d22ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.85
+      value: 14.46
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07fd7657f91ba7c4881637fb236d22ed, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1281,7 +1281,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1142812974854264, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114398665999930434, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
         type: 2}
@@ -1895,7 +1895,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1142812974854264, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114398665999930434, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
         type: 2}
@@ -2095,7 +2095,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1142812974854264, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114398665999930434, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
         type: 2}
@@ -2618,6 +2618,11 @@ Prefab:
     - target: {fileID: 4554435955969928, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295720339211200, guid: a9eb2a36a61bae642b5f57b9f4712aa8,
+        type: 2}
+      propertyPath: useKeyboard
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9eb2a36a61bae642b5f57b9f4712aa8, type: 2}
