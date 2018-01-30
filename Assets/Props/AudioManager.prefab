@@ -56,7 +56,7 @@ MonoBehaviour:
   poolSounds: []
   sizePoolSounds: 8
   poolMusic: []
-  sizePoolMusic: 2
+  sizePoolMusic: 1
   sounds:
   - name: Water
     clip: {fileID: 8300000, guid: abb5a5b73a0e798458cb11d1488813cf, type: 3}
